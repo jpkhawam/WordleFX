@@ -38,10 +38,10 @@ public class MainController {
         // TODO: add list for orange characters here. Make sure to remove letter if it turns green
         // TODO: also add a list for green letters. To style the on screen keyboard
 
-        // HARD MODE VARIABLES //
+        /* HARD MODE VARIABLES */
         // used to store on each guess if any letter from wrongLetters was used
         ArrayList<Character> usedWrongLetters = new ArrayList<>();
-        // IMPOSSIBLE MODE VARIABLES //
+        /* IMPOSSIBLE MODE VARIABLES */
         // outOfPlaceLetters[i] contains the letters tried at i that are in the winningWord but not at i
         ArrayList<ArrayList<Character>> outOfPlaceLetters = new ArrayList<>();
         for (int i = 0; i < gameSettings.getWordLength(); i++)
@@ -54,7 +54,6 @@ public class MainController {
                 guessed = true;
                 Arrays.fill(colors, "GREEN");
                 System.out.println(Arrays.toString(colors));
-                System.out.println("Congratulations, you win!");
             } else if (!(binarySearch(winningWords, userGuess) || binarySearch(dictionaryWords, userGuess))) {
                 System.out.println("Word is not in dictionary");
             } else if (gameSettings.getDifficulty().equals(Difficulty.Hard) || gameSettings.getDifficulty().equals(Difficulty.Impossible)) {
@@ -81,27 +80,30 @@ public class MainController {
                 System.out.println(Arrays.toString(colors));
             }
         }
-        if (!guessed)
-            System.out.println("Sorry, you lose");
         return guessed;
     }
 
-    // Since the words are sorted it is better to use binarySearch than something like list.contains()
+    /**
+     * Since the words are sorted it is better to use binarySearch than something like list.contains()
+     */
     public static boolean binarySearch(ArrayList<String> list, String string) {
         int low = 0, high = list.size() - 1;
         while (low <= high) {
             int mid = low + (high - low) / 2;
             int comparison = string.compareTo(list.get(mid));
-            // Check if string is present at mid
+            /* Check if string is present at mid */
             if (comparison == 0) return true;
-            // If string is greater, ignore left half
+            /* If string is greater, ignore left half */
             if (comparison > 0) low = mid + 1;
-                // If string is smaller, ignore right half
+            /* If string is smaller, ignore right half */
             else high = mid - 1;
         }
         return false;
     }
 
+    /** Checks if a word contains any letter from a list, charactersUsed is passed, so it stores the letters used
+    * in this instance (if any). It is effectively the same as having it as a return variable, but I find this simpler
+    * since this function is used often in if statements */
     public static boolean containsAnyLetterFromList(String userGuess, ArrayList<Character> wrongLetters, ArrayList<Character> charactersUsed) {
         charactersUsed = new ArrayList<>();
         for (int i = 0; i < userGuess.length(); i++) {

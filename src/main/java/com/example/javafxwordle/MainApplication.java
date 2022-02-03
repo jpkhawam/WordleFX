@@ -25,7 +25,10 @@ public class MainApplication extends Application {
 
         Random random = new Random();
         String winningWord = winningWords.get(random.nextInt(winningWords.size()));
-        guessWord(winningWord);
+        if (guessWord(winningWord))
+            System.out.println("Congratulations, you win!");
+        else
+            System.out.println("Sorry, you lose");
 
         double screenWidth = Screen.getPrimary().getBounds().getWidth();
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
