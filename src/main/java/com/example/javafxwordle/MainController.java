@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class MainController {
@@ -49,7 +50,7 @@ public class MainController {
 
         while (!guessed && numberOfGuesses < gameSettings.getMaxNumberOfGuesses()) {
             System.out.print("Guess #" + (numberOfGuesses + 1) + ": ");
-            String userGuess = scanner.next();
+            String userGuess = scanner.next().toLowerCase();
             if (userGuess.equals(winningWord)) {
                 guessed = true;
                 Arrays.fill(colors, "GREEN");
