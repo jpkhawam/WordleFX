@@ -7,9 +7,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Random;
-
-import static com.example.javafxwordle.MainController.*;
 
 public class MainApplication extends Application {
 
@@ -17,19 +14,14 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
 
-        String input;
-        while ((input = winningWordsReader.readLine()) != null)
-            winningWords.add(input);
-        while ((input = dictionaryWordsReader.readLine()) != null)
-            dictionaryWords.add(input);
+        String winningWord = MainController.getRandomWord();
 
-        Random random = new Random();
-        String winningWord = winningWords.get(random.nextInt(winningWords.size()));
-        if (guessWord(winningWord))
+        if (MainController.guessWord(winningWord))
             System.out.println("Congratulations, you win!");
         else
             System.out.println("Sorry, you lose");
 
+        System.out.println(winningWord);
         double screenWidth = Screen.getPrimary().getBounds().getWidth();
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
         Scene scene = new Scene(fxmlLoader.load(), screenWidth, screenHeight);
