@@ -38,11 +38,19 @@ public class MainHelper {
         return INSTANCE;
     }
 
+    /**
+     * @return random word from winningWords
+     */
     public String getRandomWord() {
         Random random = new Random();
         return winningWords.get(random.nextInt(winningWords.size()));
     }
 
+    /**
+     * Function responsible for handling user guessing
+     * @param winningWord word that the user is supposed to guess
+     * @return true if successfully guessed, false otherwise
+     */
     public boolean guessWord(String winningWord) {
         Scanner scanner = new Scanner(System.in);
         boolean guessed = false;
@@ -100,7 +108,10 @@ public class MainHelper {
     }
 
     /**
-     * Since the words are sorted it is better to use binarySearch than something like list.contains()
+     * performs a standard binary search
+     * @param list list of words to search from
+     * @param string word to search for in list
+     * @return true if found, false otherwise
      */
     public boolean binarySearch(ArrayList<String> list, String string) {
         int low = 0, high = list.size() - 1;
@@ -118,9 +129,12 @@ public class MainHelper {
     }
 
     /**
-     * Checks if a word contains any letter from a list, charactersUsed is passed, so it stores the letters used
-     * in this instance (if any). It is effectively the same as having it as a return variable, but I find this simpler
-     * since this function is used often in if statements
+     * checks if a word contains any letter from a given list. this is to prevent the user from
+     * entering a letter guessed incorrectly already, depending on difficulty
+     * @param userGuess the word the user entered
+     * @param wrongLetters letters that are wrong
+     * @param charactersUsed passed to store the letters used in this invocation (if any)
+     * @return true if any letters were used, false otherwise
      */
     public boolean containsAnyLetterFromList(String userGuess, ArrayList<Character> wrongLetters, ArrayList<Character> charactersUsed) {
         charactersUsed = new ArrayList<>();
