@@ -1,5 +1,9 @@
 package com.example.javafxwordle;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+
 import java.io.IOException;
 
 public class MainController {

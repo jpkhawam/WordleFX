@@ -1,12 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/16"
+      styleClass="main-screen"
       fx:controller="com.example.javafxwordle.MainController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
+    <stylesheets>
+        <URL value="@wordle.css"/>
+    </stylesheets>
+
+    <!-- TITLE -->
+
+    <Label alignment="TOP_CENTER"
+           text="Wordle"
+           textAlignment="CENTER"
+           styleClass="title" />
+
+    <!-- START OF GRIDPANE -->
+
+    <GridPane alignment="TOP_CENTER"
+              hgap="5"
+              vgap="5">
+
+        <!-- ROW 1 -->
+
+        <Label fx:id="row1rec1"
+               styleClass="default-tile"
+               GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+
+        <Label fx:id="row1rec2"
+               styleClass="default-tile"
+               GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+
+        <Label fx:id="row1rec3"
+               styleClass="default-tile"
+               GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+
+        <Label fx:id="row1rec4"
+               styleClass="default-tile"
+               GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+
+
+        <Label fx:id="row1rec5"
+               styleClass="default-tile"
+               GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+
+        <!-- ROW 2 -->
+
+        <Label fx:id="row2rec1"
+               styleClass="default-tile"
+               GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+
+        <Label fx:id="row2rec2"
+               styleClass="default-tile"
+               GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+
+        <Label fx:id="row2rec3"
+               styleClass="default-tile"
+               GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+
+        <Label fx:id="row2rec4"
+               styleClass="default-tile"
+               GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+
+        <Label fx:id="row2rec5"
+               styleClass="default-tile"
+               GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+
+        <!-- ROW 3 -->
+
+        <Label fx:id="row3rec1"
+               styleClass="default-tile"
+               GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+
+        <Label fx:id="row3rec2"
+               styleClass="default-tile"
+               GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+
+        <Label fx:id="row3rec3"
+               styleClass="default-tile"
+               GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+
+        <Label fx:id="row3rec4"
+               styleClass="default-tile"
+               GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+
+        <Label fx:id="row3rec5"
+               styleClass="default-tile"
+               GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+
+        <!-- ROW 4 -->
+
+        <Label fx:id="row4rec1"
+               styleClass="default-tile"
+               GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
+
+        <Label fx:id="row4rec2"
+               styleClass="default-tile"
+               GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
+
+        <Label fx:id="row4rec3"
+               styleClass="default-tile"
+               GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
+
+        <Label fx:id="row4rec4"
+               styleClass="default-tile"
+               GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
+
+        <Label fx:id="row4rec5"
+               styleClass="default-tile"
+               GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
+
+        <!-- ROW 5 -->
+
+        <Label fx:id="row5rec1"
+               styleClass="default-tile"
+               GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+
+        <Label fx:id="row5rec2"
+               styleClass="default-tile"
+               GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+
+        <Label fx:id="row5rec3"
+               styleClass="default-tile"
+               GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+
+        <Label fx:id="row5rec4"
+               styleClass="default-tile"
+               GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+
+        <Label fx:id="row5rec5"
+               styleClass="default-tile"
+               GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+
+        <!-- ROW 6 -->
+
+        <Label fx:id="row6rec1"
+               styleClass="default-tile"
+               GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
+
+        <Label fx:id="row6rec2"
+               styleClass="default-tile"
+               GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
+
+        <Label fx:id="row6rec3"
+               styleClass="default-tile"
+               GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
+
+        <Label fx:id="row6rec4"
+               styleClass="default-tile"
+               GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
+
+        <Label fx:id="row6rec5"
+               styleClass="default-tile"
+               GridPane.columnIndex="5" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
+
+    </GridPane>
+
+    <!-- END OF GRIDPANE -->
 
 </VBox>

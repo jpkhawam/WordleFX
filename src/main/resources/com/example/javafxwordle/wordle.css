@@ -1,0 +1,39 @@
+.root {
+    white-colour: white;
+    -wrong-colour: #787c7e;
+    -text-fill-colour: black;
+    -empty-border-colour: #d3d6da;
+    -unlocked-border-colour: #787c7e;
+    -background-colour: white;
+    -key-background-colour: #d3d6da;
+    -toast-background-colour: black;
+    -toast-letter-colour: -white-colour;
+    -present-colour: #c9b458;
+    -correct-colour: #6aaa64;
+}
+
+.default-tile {
+    -fx-background-color: -background-colour;
+    -fx-border-color: -empty-border-colour;
+    -fx-text-fill: -text-fill-colour;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-border-width: 2px;
+    -fx-min-width: 62px;
+    -fx-min-height: 62px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.main-screen {
+    -fx-background-color: -background-colour;
+    -fx-padding: 10px;
+    -fx-alignment: top-center;
+}
+
+.title {
+    -fx-font-family: "Helvetica";
+    -fx-font-weight: 700;
+    -fx-font-size: 36px;
+    -fx-text-fill: -text-fill-colour;
+}
