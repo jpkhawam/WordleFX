@@ -1,5 +1,11 @@
 package com.example.javafxwordle;
 
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,6 +20,8 @@ public class MainHelper {
     private final ArrayList<String> winningWords = new ArrayList<>();
     private final ArrayList<String> dictionaryWords = new ArrayList<>();
     private final GameSettings gameSettings = GameSettings.getInstance();
+    private int CURRENT_ROW_NUMBER = 1;
+    private int CURRENT_COLUMN_NUMBER = 1;
 
     private MainHelper() throws IOException {
         FileReader winningWordsFileReader =
@@ -38,6 +46,60 @@ public class MainHelper {
         return INSTANCE;
     }
 
+    private void modifyTile(GridPane gridPane, int searchRow, int searchColumn, String input) {
+        for (Node child : gridPane.getChildren()) {
+            Integer r = GridPane.getRowIndex(child);
+            Integer c = GridPane.getColumnIndex(child);
+            int row = r == null ? 0 : r;
+            int column = c == null ? 0 : c;
+            if (row == searchRow && column == searchColumn && (child instanceof Label)) {
+                Label tile = (Label) child;
+                tile.setText(input);
+                break;
+            }
+        }
+    }
+
+    private String getTileText(GridPane gridPane, int searchRow, int searchColumn) {
+        for (Node child : gridPane.getChildren()) {
+            Integer r = GridPane.getRowIndex(child);
+            Integer c = GridPane.getColumnIndex(child);
+            int row = r == null ? 0 : r;
+            int column = c == null ? 0 : c;
+            if (row == searchRow && column == searchColumn && (child instanceof Label))
+                return ((Label) child).getText();
+        }
+        return null;
+    }
+
+    private String getWordFromRow(GridPane gridPane) {
+        StringBuilder input = new StringBuilder();
+        for (int i = 1; i <= 5; i++)
+            input.append(getTileText(gridPane, CURRENT_ROW_NUMBER, i));
+        return input.toString();
+    }
+
+    public void onKeyPressed(GridPane gridPane, KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
+            modifyTile(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER, null);
+            System.out.println("in helper backspace");
+            if (CURRENT_COLUMN_NUMBER > 0)
+                CURRENT_COLUMN_NUMBER--;
+        } else if (keyEvent.getCode().isLetterKey()) {
+            modifyTile(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER, keyEvent.getText().toUpperCase());
+            if (CURRENT_COLUMN_NUMBER < 5)
+                CURRENT_COLUMN_NUMBER++;
+        }
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (CURRENT_ROW_NUMBER < 7 && CURRENT_COLUMN_NUMBER == 5) {
+                String input = getWordFromRow(gridPane);
+                // handle guess here
+                CURRENT_ROW_NUMBER++;
+                CURRENT_COLUMN_NUMBER = 1;
+            }
+        }
+    }
+
     /**
      * @return random word from winningWords
      */
@@ -48,6 +110,7 @@ public class MainHelper {
 
     /**
      * Function responsible for handling user guessing
+     *
      * @param winningWord word that the user is supposed to guess
      * @return true if successfully guessed, false otherwise
      */
@@ -109,7 +172,8 @@ public class MainHelper {
 
     /**
      * performs a standard binary search
-     * @param list list of words to search from
+     *
+     * @param list   list of words to search from
      * @param string word to search for in list
      * @return true if found, false otherwise
      */
@@ -122,7 +186,7 @@ public class MainHelper {
             if (comparison == 0) return true;
             /* If string is greater, ignore left half */
             if (comparison > 0) low = mid + 1;
-            /* If string is smaller, ignore right half */
+                /* If string is smaller, ignore right half */
             else high = mid - 1;
         }
         return false;
@@ -131,12 +195,14 @@ public class MainHelper {
     /**
      * checks if a word contains any letter from a given list. this is to prevent the user from
      * entering a letter guessed incorrectly already, depending on difficulty
-     * @param userGuess the word the user entered
-     * @param wrongLetters letters that are wrong
+     *
+     * @param userGuess      the word the user entered
+     * @param wrongLetters   letters that are wrong
      * @param charactersUsed passed to store the letters used in this invocation (if any)
      * @return true if any letters were used, false otherwise
      */
-    public boolean containsAnyLetterFromList(String userGuess, ArrayList<Character> wrongLetters, ArrayList<Character> charactersUsed) {
+    public boolean containsAnyLetterFromList(String userGuess, ArrayList<Character> wrongLetters,
+                                             ArrayList<Character> charactersUsed) {
         charactersUsed = new ArrayList<>();
         for (int i = 0; i < userGuess.length(); i++) {
             if (wrongLetters.contains(userGuess.charAt(i))) charactersUsed.add(userGuess.charAt(i));

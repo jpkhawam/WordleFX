@@ -1,8 +1,8 @@
 package com.example.javafxwordle;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 
@@ -15,6 +15,19 @@ public class MainController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public GridPane gridPane;
+
+    @FXML
+    protected void onKeyPressed(KeyEvent keyEvent) {
+        mainHelper.onKeyPressed(gridPane, keyEvent);
+    }
+
+    @FXML
+    protected void onMouseClicked() {
+        gridPane.requestFocus();
     }
 
     public static String getRandomWord() {
