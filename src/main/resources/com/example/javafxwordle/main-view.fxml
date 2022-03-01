@@ -21,7 +21,11 @@
     <Label alignment="TOP_CENTER"
            text="Wordle"
            textAlignment="CENTER"
-           styleClass="title"/>
+           styleClass="title">
+        <padding>
+            <Insets bottom="30.0" top="3.0"/>
+        </padding>
+    </Label>
 
     <!-- START OF GRIDPANE -->
 

@@ -1,5 +1,7 @@
 package com.example.javafxwordle;
 
+//import javafx.css.PseudoClass;
+
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -10,15 +12,26 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.zip.GZIPInputStream;
 
 public class MainHelper {
 
     private static MainHelper INSTANCE = null;
+
     private final ArrayList<String> winningWords = new ArrayList<>();
     private final ArrayList<String> dictionaryWords = new ArrayList<>();
+
     private final GameSettings gameSettings = GameSettings.getInstance();
-    private int CURRENT_ROW_NUMBER = 1;
-    private int CURRENT_COLUMN_NUMBER = 1;
+
+    private int CURRENT_ROW = 1;
+    private int CURRENT_COLUMN = 1;
+    private final int MAX_COLUMN = 5;
+    private final int MAX_ROW = 6;
+
+//    PseudoClass defaultStyle = PseudoClass.getPseudoClass("default-style");
+//    PseudoClass wrongPositionStyle = PseudoClass.getPseudoClass("wrong-position");
+//    PseudoClass rightPositionStyle = PseudoClass.getPseudoClass("right-position");
+//    PseudoClass wrongLetterStyle = PseudoClass.getPseudoClass("wrong-letter");
 
     private MainHelper() throws IOException {
         FileReader winningWordsFileReader =
@@ -43,65 +56,108 @@ public class MainHelper {
         return INSTANCE;
     }
 
-    private void modifyTile(GridPane gridPane, int searchRow, int searchColumn, String input) {
-        for (Node child : gridPane.getChildren()) {
-            Integer r = GridPane.getRowIndex(child);
-            Integer c = GridPane.getColumnIndex(child);
-            int row = r == null ? 0 : r;
-            int column = c == null ? 0 : c;
-            if (row == searchRow && column == searchColumn && (child instanceof Label)) {
-                Label tile = (Label) child;
-                tile.setText(input);
-                break;
-            }
-        }
+    private void setLabelText(GridPane gridPane, int searchRow, int searchColumn, String input) {
+        Label label = getLabel(gridPane, searchRow, searchColumn);
+        if (label != null)
+            label.setText(input);
     }
 
-    private String getTileText(GridPane gridPane, int searchRow, int searchColumn) {
+    private Label getLabel(GridPane gridPane, int searchRow, int searchColumn) {
         for (Node child : gridPane.getChildren()) {
             Integer r = GridPane.getRowIndex(child);
             Integer c = GridPane.getColumnIndex(child);
             int row = r == null ? 0 : r;
             int column = c == null ? 0 : c;
             if (row == searchRow && column == searchColumn && (child instanceof Label))
-                return ((Label) child).getText();
+                return (Label) child;
         }
         return null;
     }
 
-    private String getWordFromRow(GridPane gridPane) {
+    private String getLabelText(GridPane gridPane, int searchRow, int searchColumn) {
+        Label label = getLabel(gridPane, searchRow, searchColumn);
+        if (label != null)
+            return label.getText();
+        return null;
+    }
+
+    private void setLabelStyleClass(GridPane gridPane, int searchRow, int searchColumn, String styleclass) {
+        Label label = getLabel(gridPane, searchRow, searchColumn);
+        if (label != null) {
+            label.getStyleClass().add(styleclass);
+        }
+    }
+
+    private void clearLabelStyleClass(GridPane gridPane, int searchRow, int searchColumn) {
+        Label label = getLabel(gridPane, searchRow, searchColumn);
+        if (label != null) {
+            label.getStyleClass().clear();
+        }
+    }
+
+    private void colorRowLabels(GridPane gridPane, int searchRow, String winningWord) {
+        for(int i = 1; i <= MAX_COLUMN; i++) {
+            Label label = getLabel(gridPane, searchRow, i);
+            String styleClass = null;
+            if (label != null) {
+                char currentCharacter = label.getText().charAt(0);
+                if (winningWord.charAt(i - 1) == currentCharacter) {
+                    styleClass = "correct-letter";
+                }
+                else if (winningWord.contains(label.getText())) {
+                    styleClass = "present-letter";
+                }
+                else {
+                    styleClass = "wrong-letter";
+                }
+                clearLabelStyleClass(gridPane, searchRow, i);
+                setLabelStyleClass(gridPane, searchRow, i, styleClass);
+            }
+        }
+    }
+
+    private String getWordFromCurrentRow(GridPane gridPane) {
         StringBuilder input = new StringBuilder();
-        for (int i = 1; i <= 5; i++)
-            input.append(getTileText(gridPane, CURRENT_ROW_NUMBER, i));
+        for (int i = 1; i <= MAX_COLUMN; i++)
+            input.append(getLabelText(gridPane, CURRENT_ROW, i));
         return input.toString();
     }
 
     public void onKeyPressed(GridPane gridPane, KeyEvent keyEvent) {
 
         if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
-            if (getTileText(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER) == null)
-                if (CURRENT_COLUMN_NUMBER > 1)
-                    CURRENT_COLUMN_NUMBER--;
-            modifyTile(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER, null);
-        }
+            if ((CURRENT_COLUMN == MAX_COLUMN || CURRENT_COLUMN == 1)
+                    && !Objects.equals(getLabelText(gridPane, CURRENT_ROW, CURRENT_COLUMN), "")) {
+                setLabelText(gridPane, CURRENT_ROW, CURRENT_COLUMN, "");
+                clearLabelStyleClass(gridPane, CURRENT_ROW, CURRENT_COLUMN);
+                setLabelStyleClass(gridPane, CURRENT_ROW, CURRENT_COLUMN, "default-tile");
+            } else if ((CURRENT_COLUMN > 1 && CURRENT_COLUMN < MAX_COLUMN)
+                    || (CURRENT_COLUMN == MAX_COLUMN && Objects.equals(getLabelText(gridPane, CURRENT_ROW, CURRENT_COLUMN), ""))) {
+                CURRENT_COLUMN--;
+                setLabelText(gridPane, CURRENT_ROW, CURRENT_COLUMN, "");
+                clearLabelStyleClass(gridPane, CURRENT_ROW, CURRENT_COLUMN);
+                setLabelStyleClass(gridPane, CURRENT_ROW, CURRENT_COLUMN, "default-tile");
+            }
 
-        else if (keyEvent.getCode().isLetterKey()) {
+        } else if (keyEvent.getCode().isLetterKey()) {
             // this is to make it so that when the user types a letter but the row is full
             // it doesn't change the last letter instead
-            if (CURRENT_COLUMN_NUMBER == 5 && getTileText(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER) == null)
-                modifyTile(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER, keyEvent.getText().toUpperCase());
-            else if (CURRENT_COLUMN_NUMBER < 6) {
-                modifyTile(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER, keyEvent.getText().toUpperCase());
-                CURRENT_COLUMN_NUMBER++;
+            if (CURRENT_COLUMN != MAX_COLUMN || Objects.equals(getLabelText(gridPane, CURRENT_ROW, CURRENT_COLUMN), "")) {
+                setLabelText(gridPane, CURRENT_ROW, CURRENT_COLUMN, keyEvent.getText().toUpperCase());
+                setLabelStyleClass(gridPane, CURRENT_ROW, CURRENT_COLUMN, "tile-with-letter");
+                if (CURRENT_COLUMN < MAX_COLUMN)
+                    CURRENT_COLUMN++;
             }
         }
 
         if (keyEvent.getCode() == KeyCode.ENTER) {
-            if (CURRENT_ROW_NUMBER < 7 && CURRENT_COLUMN_NUMBER == 5) {
-                String guess = getWordFromRow(gridPane).toLowerCase();
+            if (CURRENT_ROW <= MAX_ROW && CURRENT_COLUMN == MAX_COLUMN) {
+                String guess = getWordFromCurrentRow(gridPane).toLowerCase();
                 if (isValidGuess(guess)) {
-                    CURRENT_ROW_NUMBER++;
-                    CURRENT_COLUMN_NUMBER = 1;
+                    // replace this with actual guess when ready
+                    colorRowLabels(gridPane, CURRENT_ROW, "BEACH");
+                    CURRENT_ROW++;
+                    CURRENT_COLUMN = 1;
                 }
             }
         }
@@ -111,8 +167,7 @@ public class MainHelper {
      * @return random word from winningWords
      */
     public String getRandomWord() {
-        Random random = new Random();
-        return winningWords.get(random.nextInt(winningWords.size()));
+        return winningWords.get(new Random().nextInt(winningWords.size()));
     }
 
     private boolean isValidGuess(String guess) {

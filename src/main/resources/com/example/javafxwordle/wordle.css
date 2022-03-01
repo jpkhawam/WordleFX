@@ -1,21 +1,64 @@
 .root {
-    white-colour: white;
-    -wrong-colour: #787c7e;
-    -text-fill-colour: black;
-    -empty-border-colour: #d3d6da;
-    -unlocked-border-colour: #787c7e;
-    -background-colour: white;
-    -key-background-colour: #d3d6da;
-    -toast-background-colour: black;
-    -toast-letter-colour: -white-colour;
-    -present-colour: #c9b458;
-    -correct-colour: #6aaa64;
+    white-color: white;
+    -wrong-color: #787c7e;
+    -text-fill-color: black;
+    -empty-border-color: #d3d6da;
+    -unlocked-border-color: #878a8c;
+    -background-color: white;
+    -key-background-color: #d3d6da;
+    -toast-background-color: black;
+    -toast-letter-color: -white-color;
+    -present-color: #c9b458;
+    -correct-color: #6aaa64;
 }
 
 .default-tile {
-    -fx-background-color: -background-colour;
-    -fx-border-color: -empty-border-colour;
-    -fx-text-fill: -text-fill-colour;
+    -fx-background-color: -background-color;
+    -fx-border-color: -empty-border-color;
+    -fx-text-fill: -text-fill-color;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-border-width: 2px;
+    -fx-min-width: 62px;
+    -fx-min-height: 62px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.tile-with-letter {
+    -fx-border-color: -unlocked-border-color;
+}
+
+.present-letter {
+    -fx-background-color: -present-color;
+    -fx-border-color: -present-color;
+    -fx-text-fill: white;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-border-width: 2px;
+    -fx-min-width: 62px;
+    -fx-min-height: 62px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.wrong-letter {
+    -fx-background-color: -wrong-color;
+    -fx-border-color: -wrong-color;
+    -fx-text-fill: white;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-border-width: 2px;
+    -fx-min-width: 62px;
+    -fx-min-height: 62px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.correct-letter {
+    -fx-background-color: -correct-color;
+    -fx-border-color: -correct-color;
+    -fx-text-fill: white;
     -fx-font-size: 30px;
     -fx-font-weight: bold;
     -fx-border-width: 2px;
@@ -26,7 +69,7 @@
 }
 
 .main-screen {
-    -fx-background-color: -background-colour;
+    -fx-background-color: -background-color;
     -fx-padding: 10px;
     -fx-alignment: top-center;
 }
@@ -35,5 +78,5 @@
     -fx-font-family: "Helvetica";
     -fx-font-weight: 700;
     -fx-font-size: 36px;
-    -fx-text-fill: -text-fill-colour;
+    -fx-text-fill: -text-fill-color;
 }

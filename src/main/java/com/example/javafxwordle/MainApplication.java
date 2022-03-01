@@ -18,7 +18,6 @@ public class MainApplication extends Application {
         double screenWidth = Screen.getPrimary().getBounds().getWidth();
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
         Scene scene = new Scene(fxmlLoader.load(), screenWidth, screenHeight);
-     //   MainController.gridPane.requestFocus();
         stage.setTitle("Wordle!");
         stage.setScene(scene);
         stage.show();
