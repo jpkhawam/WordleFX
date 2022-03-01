@@ -9,10 +9,7 @@ import javafx.scene.layout.GridPane;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class MainHelper {
 
@@ -81,21 +78,22 @@ public class MainHelper {
 
     public void onKeyPressed(GridPane gridPane, KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
+            if (getTileText(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER) == null)
+                if (CURRENT_COLUMN_NUMBER > 1)
+                    CURRENT_COLUMN_NUMBER--;
             modifyTile(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER, null);
-            System.out.println("in helper backspace");
-            if (CURRENT_COLUMN_NUMBER > 0)
-                CURRENT_COLUMN_NUMBER--;
         } else if (keyEvent.getCode().isLetterKey()) {
             modifyTile(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER, keyEvent.getText().toUpperCase());
-            if (CURRENT_COLUMN_NUMBER < 5)
+            if (CURRENT_COLUMN_NUMBER < 6)
                 CURRENT_COLUMN_NUMBER++;
         }
         if (keyEvent.getCode() == KeyCode.ENTER) {
             if (CURRENT_ROW_NUMBER < 7 && CURRENT_COLUMN_NUMBER == 5) {
-                String input = getWordFromRow(gridPane);
-                // handle guess here
-                CURRENT_ROW_NUMBER++;
-                CURRENT_COLUMN_NUMBER = 1;
+                String guess = getWordFromRow(gridPane).toLowerCase();
+                if (isValidGuess(guess)) {
+                    CURRENT_ROW_NUMBER++;
+                    CURRENT_COLUMN_NUMBER = 1;
+                }
             }
         }
     }
@@ -106,6 +104,10 @@ public class MainHelper {
     public String getRandomWord() {
         Random random = new Random();
         return winningWords.get(random.nextInt(winningWords.size()));
+    }
+
+    private boolean isValidGuess(String guess) {
+        return binarySearch(winningWords, guess) || binarySearch(dictionaryWords, guess);
     }
 
     /**
@@ -141,7 +143,7 @@ public class MainHelper {
                 guessed = true;
                 Arrays.fill(colors, "GREEN");
                 System.out.println(Arrays.toString(colors));
-            } else if (!(binarySearch(winningWords, userGuess) || binarySearch(dictionaryWords, userGuess))) {
+            } else if (!isValidGuess(userGuess)) {
                 System.out.println("Word is not in dictionary");
             } else if (gameSettings.getDifficulty().equals(Difficulty.Hard) || gameSettings.getDifficulty().equals(Difficulty.Impossible)) {
                 if (containsAnyLetterFromList(userGuess, wrongLetters, usedWrongLetters))
