@@ -77,16 +77,25 @@ public class MainHelper {
     }
 
     public void onKeyPressed(GridPane gridPane, KeyEvent keyEvent) {
+
         if (keyEvent.getCode() == KeyCode.BACK_SPACE) {
             if (getTileText(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER) == null)
                 if (CURRENT_COLUMN_NUMBER > 1)
                     CURRENT_COLUMN_NUMBER--;
             modifyTile(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER, null);
-        } else if (keyEvent.getCode().isLetterKey()) {
-            modifyTile(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER, keyEvent.getText().toUpperCase());
-            if (CURRENT_COLUMN_NUMBER < 6)
-                CURRENT_COLUMN_NUMBER++;
         }
+
+        else if (keyEvent.getCode().isLetterKey()) {
+            // this is to make it so that when the user types a letter but the row is full
+            // it doesn't change the last letter instead
+            if (CURRENT_COLUMN_NUMBER == 5 && getTileText(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER) == null)
+                modifyTile(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER, keyEvent.getText().toUpperCase());
+            else if (CURRENT_COLUMN_NUMBER < 6) {
+                modifyTile(gridPane, CURRENT_ROW_NUMBER, CURRENT_COLUMN_NUMBER, keyEvent.getText().toUpperCase());
+                CURRENT_COLUMN_NUMBER++;
+            }
+        }
+
         if (keyEvent.getCode() == KeyCode.ENTER) {
             if (CURRENT_ROW_NUMBER < 7 && CURRENT_COLUMN_NUMBER == 5) {
                 String guess = getWordFromRow(gridPane).toLowerCase();
