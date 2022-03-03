@@ -15,12 +15,11 @@ public class MainHelper {
 
     private static MainHelper INSTANCE = null;
 
-    private final GameSettings gameSettings = GameSettings.getInstance();
-
     private int CURRENT_ROW = 1;
     private int CURRENT_COLUMN = 1;
-    private final int MAX_COLUMN = gameSettings.getWordLength();
-    private final int MAX_ROW = gameSettings.getMaxNumberOfGuesses();
+    private final int MAX_COLUMN = 5;
+    private final int MAX_ROW = 6;
+    private String wordToGuess = "OASIS";
 
     private MainHelper() {
     }
@@ -32,12 +31,40 @@ public class MainHelper {
     }
 
     public void createGrid(GridPane gridPane) {
-        for (int i = 1; i <= GameSettings.getInstance().getMaxNumberOfGuesses(); i++) {
-            for (int j = 1; j <= GameSettings.getInstance().getWordLength(); j++) {
+        for (int i = 1; i <= MAX_ROW; i++) {
+            for (int j = 1; j <= MAX_COLUMN; j++) {
                 Label label = new Label();
                 label.getStyleClass().add("default-tile");
                 gridPane.add(label, j, i);
             }
+        }
+    }
+
+    public void createKeyboard(GridPane keyboardRow_first, GridPane keyboardRow_second, GridPane keyboardRow_third) {
+        String[] firstRowLetters = {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"};
+        String[] secondRowLetters = {"A", "S", "D", "F", "G", "H", "J", "K", "L"};
+        String[] thirdRowLetters = {"↵", "Z", "X", "C", "V", "B", "N", "M", "←"};
+
+        for (int i = 0; i < firstRowLetters.length; i++) {
+            Label label = new Label();
+            label.getStyleClass().add("keyboardTile");
+            label.setText(firstRowLetters[i]);
+            keyboardRow_first.add(label, i, 1);
+        }
+        for (int i = 0; i < secondRowLetters.length; i++) {
+            Label label = new Label();
+            label.getStyleClass().add("keyboardTile");
+            label.setText(secondRowLetters[i]);
+            keyboardRow_second.add(label, i, 2);
+        }
+        for (int i = 0; i < thirdRowLetters.length; i++) {
+            Label label = new Label();
+            if ( i == 0 || i == thirdRowLetters.length - 1)
+                label.getStyleClass().add("keyboardTileBackspace");
+            else
+                label.getStyleClass().add("keyboardTile");
+            label.setText(thirdRowLetters[i]);
+            keyboardRow_third.add(label, i, 3);
         }
     }
 
@@ -137,8 +164,7 @@ public class MainHelper {
             if (CURRENT_ROW <= MAX_ROW && CURRENT_COLUMN == MAX_COLUMN) {
                 String guess = getWordFromCurrentRow(gridPane).toLowerCase();
                 if (isValidGuess(guess)) {
-                    // replace this with actual guess when ready
-                    colorRowLabels(gridPane, CURRENT_ROW, "OASIS");
+                    colorRowLabels(gridPane, CURRENT_ROW, wordToGuess.toUpperCase());
                     CURRENT_ROW++;
                     CURRENT_COLUMN = 1;
                 }
@@ -146,11 +172,8 @@ public class MainHelper {
         }
     }
 
-    /**
-     * @return random word from winningWords
-     */
-    public String getRandomWord() {
-        return winningWords.get(new Random().nextInt(winningWords.size()));
+    public void getRandomWord() {
+        wordToGuess = winningWords.get(new Random().nextInt(winningWords.size()));
     }
 
     private boolean isValidGuess(String guess) {
@@ -179,28 +202,4 @@ public class MainHelper {
         return false;
     }
 
-    public void createKeyboard(GridPane keyboardRow_first, GridPane keyboardRow_second, GridPane keyboardRow_third) {
-        String[] firstRowLetters = {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"};
-        String[] secondRowLetters = {"A", "S", "D", "F", "G", "H", "J", "K", "L"};
-        String[] thirdRowLetters = {"Z", "X", "C", "V", "B", "N", "M"};
-
-        for (int i = 0; i < firstRowLetters.length; i++) {
-            Label label = new Label();
-            label.getStyleClass().add("keyboardTile");
-            label.setText(firstRowLetters[i]);
-            keyboardRow_first.add(label, i, 1);
-        }
-        for (int i = 0; i < secondRowLetters.length; i++) {
-            Label label = new Label();
-            label.getStyleClass().add("keyboardTile");
-            label.setText(secondRowLetters[i]);
-            keyboardRow_second.add(label, i, 2);
-        }
-        for (int i = 0; i < thirdRowLetters.length; i++) {
-            Label label = new Label();
-            label.getStyleClass().add("keyboardTile");
-            label.setText(thirdRowLetters[i]);
-            keyboardRow_third.add(label, i, 3);
-        }
-    }
 }

@@ -26,6 +26,7 @@ public class MainApplication extends Application {
         MainController mainController = fxmlLoader.getController();
         mainController.createGrid();
         mainController.createKeyboard();
+        mainController.getRandomWord();
 
         double screenWidth = Screen.getPrimary().getBounds().getWidth();
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
@@ -37,6 +38,7 @@ public class MainApplication extends Application {
         stage.show();
 
         mainController.gridRequestFocus();
+
     }
 
     public static void main(String[] args) {

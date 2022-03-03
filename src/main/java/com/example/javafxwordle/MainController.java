@@ -34,7 +34,7 @@ public class MainController {
         mainHelper.onKeyPressed(gridPane, keyEvent);
     }
 
-    public String getRandomWord() {
-        return mainHelper.getRandomWord();
+    public void getRandomWord() {
+        mainHelper.getRandomWord();
     }
 }
