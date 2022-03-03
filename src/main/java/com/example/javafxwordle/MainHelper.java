@@ -6,7 +6,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 
-import java.io.IOException;
 import java.util.*;
 
 import static com.example.javafxwordle.MainApplication.dictionaryWords;
@@ -23,9 +22,10 @@ public class MainHelper {
     private final int MAX_COLUMN = gameSettings.getWordLength();
     private final int MAX_ROW = gameSettings.getMaxNumberOfGuesses();
 
-    private MainHelper()  {}
+    private MainHelper() {
+    }
 
-    public static MainHelper getInstance() throws IOException {
+    public static MainHelper getInstance() {
         if (INSTANCE == null)
             INSTANCE = new MainHelper();
         return INSTANCE;
@@ -81,18 +81,16 @@ public class MainHelper {
     }
 
     private void colorRowLabels(GridPane gridPane, int searchRow, String winningWord) {
-        for(int i = 1; i <= MAX_COLUMN; i++) {
+        for (int i = 1; i <= MAX_COLUMN; i++) {
             Label label = getLabel(gridPane, searchRow, i);
             String styleClass;
             if (label != null) {
                 char currentCharacter = label.getText().charAt(0);
                 if (winningWord.charAt(i - 1) == currentCharacter) {
                     styleClass = "correct-letter";
-                }
-                else if (winningWord.contains(label.getText())) {
+                } else if (winningWord.contains(label.getText())) {
                     styleClass = "present-letter";
-                }
-                else {
+                } else {
                     styleClass = "wrong-letter";
                 }
                 clearLabelStyleClass(gridPane, searchRow, i);
@@ -181,4 +179,28 @@ public class MainHelper {
         return false;
     }
 
+    public void createKeyboard(GridPane keyboardRow_first, GridPane keyboardRow_second, GridPane keyboardRow_third) {
+        String[] firstRowLetters = {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"};
+        String[] secondRowLetters = {"A", "S", "D", "F", "G", "H", "J", "K", "L"};
+        String[] thirdRowLetters = {"Z", "X", "C", "V", "B", "N", "M"};
+
+        for (int i = 0; i < firstRowLetters.length; i++) {
+            Label label = new Label();
+            label.getStyleClass().add("keyboardTile");
+            label.setText(firstRowLetters[i]);
+            keyboardRow_first.add(label, i, 1);
+        }
+        for (int i = 0; i < secondRowLetters.length; i++) {
+            Label label = new Label();
+            label.getStyleClass().add("keyboardTile");
+            label.setText(secondRowLetters[i]);
+            keyboardRow_second.add(label, i, 2);
+        }
+        for (int i = 0; i < thirdRowLetters.length; i++) {
+            Label label = new Label();
+            label.getStyleClass().add("keyboardTile");
+            label.setText(thirdRowLetters[i]);
+            keyboardRow_third.add(label, i, 3);
+        }
+    }
 }

@@ -25,6 +25,7 @@ public class MainApplication extends Application {
         Parent root = fxmlLoader.load();
         MainController mainController = fxmlLoader.getController();
         mainController.createGrid();
+        mainController.createKeyboard();
 
         double screenWidth = Screen.getPrimary().getBounds().getWidth();
         double screenHeight = Screen.getPrimary().getBounds().getHeight();
