@@ -26,20 +26,17 @@
         </padding>
     </Label>
 
-    <Line
-            endX="2000"
-            stroke="grey"/>
+    <Line endX="2000"
+          stroke="grey"/>
 
     <GridPane fx:id="gridPane"
               alignment="TOP_CENTER"
               hgap="5"
               vgap="5"
               onKeyPressed="#onKeyPressed">
-
         <padding>
             <Insets bottom="15" top="15.0"/>
         </padding>
-
     </GridPane>
 
 </VBox>

@@ -20,8 +20,8 @@ public class MainHelper {
 
     private int CURRENT_ROW = 1;
     private int CURRENT_COLUMN = 1;
-    private final int MAX_COLUMN = 5;
-    private final int MAX_ROW = 6;
+    private final int MAX_COLUMN = gameSettings.getWordLength();
+    private final int MAX_ROW = gameSettings.getMaxNumberOfGuesses();
 
     private MainHelper()  {}
 
@@ -160,68 +160,6 @@ public class MainHelper {
     }
 
     /**
-     * Function responsible for handling user guessing
-     *
-     * @param winningWord word that the user is supposed to guess
-     * @return true if successfully guessed, false otherwise
-     */
-    public boolean guessWord(String winningWord) {
-        Scanner scanner = new Scanner(System.in);
-        boolean guessed = false;
-        String[] colors = new String[gameSettings.getWordLength()];
-        int numberOfGuesses = 0;
-        // these are the letters that the user already guessed and are wrong
-        ArrayList<Character> wrongLetters = new ArrayList<>();
-
-        // TODO: add list for orange characters here. Make sure to remove letter if it turns green
-        // TODO: also add a list for green letters. To style the on screen keyboard
-
-        /* HARD MODE VARIABLES */
-        // used to store on each guess if any letter from wrongLetters was used
-        ArrayList<Character> usedWrongLetters = new ArrayList<>();
-        /* IMPOSSIBLE MODE VARIABLES */
-        // outOfPlaceLetters[i] contains the letters tried at i that are in the winningWord but not at i
-        ArrayList<ArrayList<Character>> outOfPlaceLetters = new ArrayList<>();
-        for (int i = 0; i < gameSettings.getWordLength(); i++)
-            outOfPlaceLetters.add(new ArrayList<>());
-
-        while (!guessed && numberOfGuesses < gameSettings.getMaxNumberOfGuesses()) {
-            System.out.print("Guess #" + (numberOfGuesses + 1) + ": ");
-            String userGuess = scanner.next().toLowerCase();
-            if (userGuess.equals(winningWord)) {
-                guessed = true;
-                Arrays.fill(colors, "GREEN");
-                System.out.println(Arrays.toString(colors));
-            } else if (!isValidGuess(userGuess)) {
-                System.out.println("Word is not in dictionary");
-            } else if (gameSettings.getDifficulty().equals(Difficulty.Hard) || gameSettings.getDifficulty().equals(Difficulty.Impossible)) {
-                if (containsAnyLetterFromList(userGuess, wrongLetters, usedWrongLetters))
-                    System.out.println("You cannot use any of these letters: " + usedWrongLetters);
-                if (gameSettings.getDifficulty().equals(Difficulty.Impossible)) {
-                    for (ArrayList<Character> list : outOfPlaceLetters)
-                        if (containsAnyLetterFromList(userGuess, list, usedWrongLetters))
-                            System.out.println("Cannot use an orange letter in the same spot twice");
-                }
-            } else {
-                for (int i = 0; i < userGuess.length(); i++) {
-                    if (userGuess.charAt(i) == winningWord.charAt(i))
-                        colors[i] = "GREEN";
-                    else if (winningWord.contains("" + userGuess.charAt(i))) {
-                        colors[i] = "Orange";
-                        outOfPlaceLetters.get(i).add(userGuess.charAt(i));
-                    } else {
-                        colors[i] = "grey";
-                        wrongLetters.add(userGuess.charAt(i));
-                    }
-                }
-                numberOfGuesses++;
-                System.out.println(Arrays.toString(colors));
-            }
-        }
-        return guessed;
-    }
-
-    /**
      * performs a standard binary search
      *
      * @param list   list of words to search from
@@ -243,21 +181,4 @@ public class MainHelper {
         return false;
     }
 
-    /**
-     * checks if a word contains any letter from a given list. this is to prevent the user from
-     * entering a letter guessed incorrectly already, depending on difficulty
-     *
-     * @param userGuess      the word the user entered
-     * @param wrongLetters   letters that are wrong
-     * @param charactersUsed passed to store the letters used in this invocation (if any)
-     * @return true if any letters were used, false otherwise
-     */
-    public boolean containsAnyLetterFromList(String userGuess, ArrayList<Character> wrongLetters,
-                                             ArrayList<Character> charactersUsed) {
-        charactersUsed = new ArrayList<>();
-        for (int i = 0; i < userGuess.length(); i++) {
-            if (wrongLetters.contains(userGuess.charAt(i))) charactersUsed.add(userGuess.charAt(i));
-        }
-        return charactersUsed.size() > 0;
-    }
 }

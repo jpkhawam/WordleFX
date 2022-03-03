@@ -9,7 +9,6 @@ import java.io.IOException;
 public class MainController {
 
     public MainController() throws IOException {
-
     }
 
     private final MainHelper mainHelper = MainHelper.getInstance();
@@ -33,9 +32,5 @@ public class MainController {
 
     public String getRandomWord() {
         return mainHelper.getRandomWord();
-    }
-
-    public boolean guessWord(String winningWord) {
-        return mainHelper.guessWord(winningWord);
     }
 }
