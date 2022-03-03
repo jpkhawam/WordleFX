@@ -7,34 +7,35 @@ import javafx.scene.layout.GridPane;
 import java.io.IOException;
 
 public class MainController {
-    private static MainHelper mainHelper;
 
-    static {
-        try {
-            mainHelper = MainHelper.getInstance();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public MainController() throws IOException {
+
     }
+
+    private final MainHelper mainHelper = MainHelper.getInstance();
 
     @FXML
     public GridPane gridPane;
+
+
+    public void createGrid() {
+        mainHelper.createGrid(gridPane);
+    }
+
+    public void gridRequestFocus() {
+        gridPane.requestFocus();
+    }
 
     @FXML
     protected void onKeyPressed(KeyEvent keyEvent) {
         mainHelper.onKeyPressed(gridPane, keyEvent);
     }
 
-    @FXML
-    protected void onMouseClicked() {
-        gridPane.requestFocus();
-    }
-
-    public static String getRandomWord() {
+    public String getRandomWord() {
         return mainHelper.getRandomWord();
     }
 
-    public static boolean guessWord(String winningWord) {
+    public boolean guessWord(String winningWord) {
         return mainHelper.guessWord(winningWord);
     }
 }

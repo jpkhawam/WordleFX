@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
+<?import javafx.scene.shape.Line?>
 <VBox xmlns:fx="http://javafx.com/fxml/1"
       xmlns="http://javafx.com/javafx/16"
       styleClass="main-screen"
@@ -16,162 +17,29 @@
         <URL value="@wordle.css"/>
     </stylesheets>
 
-    <!-- TITLE -->
-
     <Label alignment="TOP_CENTER"
-           text="Wordle"
+           text="WordleFX"
            textAlignment="CENTER"
            styleClass="title">
         <padding>
-            <Insets bottom="30.0" top="3.0"/>
+            <Insets bottom="7.0" top="3.0"/>
         </padding>
     </Label>
 
-    <!-- START OF GRIDPANE -->
+    <Line
+            endX="2000"
+            stroke="grey"/>
 
     <GridPane fx:id="gridPane"
               alignment="TOP_CENTER"
               hgap="5"
               vgap="5"
-              onKeyPressed="#onKeyPressed"
-              onMouseClicked="#onMouseClicked"
-    >
+              onKeyPressed="#onKeyPressed">
 
-        <!-- ROW 1 -->
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="3" GridPane.rowIndex="1"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="4" GridPane.rowIndex="1"/>
-
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="5" GridPane.rowIndex="1"/>
-
-        <!-- ROW 2 -->
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="3" GridPane.rowIndex="2"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="4" GridPane.rowIndex="2"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="5" GridPane.rowIndex="2"/>
-
-        <!-- ROW 3 -->
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="2" GridPane.rowIndex="3"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="3" GridPane.rowIndex="3"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="4" GridPane.rowIndex="3"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="5" GridPane.rowIndex="3"/>
-
-        <!-- ROW 4 -->
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="2" GridPane.rowIndex="4"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="3" GridPane.rowIndex="4"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="4" GridPane.rowIndex="4"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="5" GridPane.rowIndex="4"/>
-
-        <!-- ROW 5 -->
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="2" GridPane.rowIndex="5"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="3" GridPane.rowIndex="5"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="4" GridPane.rowIndex="5"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="5" GridPane.rowIndex="5"/>
-
-        <!-- ROW 6 -->
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="1" GridPane.rowIndex="6"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="2" GridPane.rowIndex="6"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="3" GridPane.rowIndex="6"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="4" GridPane.rowIndex="6"/>
-
-        <Label
-                styleClass="default-tile"
-                GridPane.columnIndex="5" GridPane.rowIndex="6"/>
+        <padding>
+            <Insets bottom="15" top="15.0"/>
+        </padding>
 
     </GridPane>
-
-    <!-- END OF GRIDPANE -->
 
 </VBox>

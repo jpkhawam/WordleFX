@@ -1,25 +1,20 @@
 package com.example.javafxwordle;
 
-//import javafx.css.PseudoClass;
-
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
-import java.util.zip.GZIPInputStream;
+
+import static com.example.javafxwordle.MainApplication.dictionaryWords;
+import static com.example.javafxwordle.MainApplication.winningWords;
 
 public class MainHelper {
 
     private static MainHelper INSTANCE = null;
-
-    private final ArrayList<String> winningWords = new ArrayList<>();
-    private final ArrayList<String> dictionaryWords = new ArrayList<>();
 
     private final GameSettings gameSettings = GameSettings.getInstance();
 
@@ -28,32 +23,22 @@ public class MainHelper {
     private final int MAX_COLUMN = 5;
     private final int MAX_ROW = 6;
 
-//    PseudoClass defaultStyle = PseudoClass.getPseudoClass("default-style");
-//    PseudoClass wrongPositionStyle = PseudoClass.getPseudoClass("wrong-position");
-//    PseudoClass rightPositionStyle = PseudoClass.getPseudoClass("right-position");
-//    PseudoClass wrongLetterStyle = PseudoClass.getPseudoClass("wrong-letter");
-
-    private MainHelper() throws IOException {
-        FileReader winningWordsFileReader =
-                new FileReader("src/main/resources/com/example/javafxwordle/winning-words.txt");
-        FileReader dictionaryWordsFileReader =
-                new FileReader("src/main/resources/com/example/javafxwordle/dictionary.txt");
-        BufferedReader winningWordsReader =
-                new BufferedReader(winningWordsFileReader);
-        BufferedReader dictionaryWordsReader =
-                new BufferedReader(dictionaryWordsFileReader);
-
-        String input;
-        while ((input = winningWordsReader.readLine()) != null)
-            winningWords.add(input);
-        while ((input = dictionaryWordsReader.readLine()) != null)
-            dictionaryWords.add(input);
-    }
+    private MainHelper()  {}
 
     public static MainHelper getInstance() throws IOException {
         if (INSTANCE == null)
             INSTANCE = new MainHelper();
         return INSTANCE;
+    }
+
+    public void createGrid(GridPane gridPane) {
+        for (int i = 1; i <= GameSettings.getInstance().getMaxNumberOfGuesses(); i++) {
+            for (int j = 1; j <= GameSettings.getInstance().getWordLength(); j++) {
+                Label label = new Label();
+                label.getStyleClass().add("default-tile");
+                gridPane.add(label, j, i);
+            }
+        }
     }
 
     private void setLabelText(GridPane gridPane, int searchRow, int searchColumn, String input) {
@@ -98,7 +83,7 @@ public class MainHelper {
     private void colorRowLabels(GridPane gridPane, int searchRow, String winningWord) {
         for(int i = 1; i <= MAX_COLUMN; i++) {
             Label label = getLabel(gridPane, searchRow, i);
-            String styleClass = null;
+            String styleClass;
             if (label != null) {
                 char currentCharacter = label.getText().charAt(0);
                 if (winningWord.charAt(i - 1) == currentCharacter) {
@@ -155,7 +140,7 @@ public class MainHelper {
                 String guess = getWordFromCurrentRow(gridPane).toLowerCase();
                 if (isValidGuess(guess)) {
                     // replace this with actual guess when ready
-                    colorRowLabels(gridPane, CURRENT_ROW, "BEACH");
+                    colorRowLabels(gridPane, CURRENT_ROW, "OASIS");
                     CURRENT_ROW++;
                     CURRENT_COLUMN = 1;
                 }
