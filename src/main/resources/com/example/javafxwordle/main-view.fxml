@@ -39,4 +39,122 @@
         </padding>
     </GridPane>
 
+    <!-- KEYBOARD -->
+
+    <GridPane vgap="5" hgap="5" alignment="center">
+        <padding>
+            <Insets top="10.0"/>
+        </padding>
+        <Label fx:id="q"
+               styleClass="keyboardTile" text="Q"
+               GridPane.columnIndex="1"  GridPane.rowIndex="1" />
+
+        <Label fx:id="w"
+               styleClass="keyboardTile" text="W"
+               GridPane.columnIndex="2"  GridPane.rowIndex="1" />
+
+        <Label fx:id="e"
+               styleClass="keyboardTile" text="E"
+               GridPane.columnIndex="3"  GridPane.rowIndex="1" />
+
+        <Label fx:id="r"
+               styleClass="keyboardTile" text="R"
+               GridPane.columnIndex="4"  GridPane.rowIndex="1" />
+
+        <Label fx:id="t"
+               styleClass="keyboardTile" text="T"
+               GridPane.columnIndex="5"  GridPane.rowIndex="1" />
+
+        <Label fx:id="y"
+               styleClass="keyboardTile" text="Y"
+               GridPane.columnIndex="6"  GridPane.rowIndex="1" />
+
+        <Label fx:id="u"
+               styleClass="keyboardTile" text="U"
+               GridPane.columnIndex="7"  GridPane.rowIndex="1" />
+
+        <Label fx:id="i"
+               styleClass="keyboardTile" text="I"
+               GridPane.columnIndex="8"  GridPane.rowIndex="1" />
+
+        <Label fx:id="o"
+               styleClass="keyboardTile" text="O"
+               GridPane.columnIndex="9"  GridPane.rowIndex="1" />
+
+        <Label fx:id="p"
+               styleClass="keyboardTile" text="P"
+               GridPane.columnIndex="10"  GridPane.rowIndex="1" />
+    </GridPane>
+    <!--ROW 2-->
+    <GridPane vgap="5" hgap="5" alignment="center">
+
+        <Label fx:id="a"
+               styleClass="keyboardTile" text="A"
+               GridPane.columnIndex="1"  GridPane.rowIndex="1" />
+
+        <Label fx:id="s"
+               styleClass="keyboardTile" text="S"
+               GridPane.columnIndex="2"  GridPane.rowIndex="1" />
+
+        <Label fx:id="d"
+               styleClass="keyboardTile" text="D"
+               GridPane.columnIndex="3"  GridPane.rowIndex="1" />
+
+        <Label fx:id="f"
+               styleClass="keyboardTile" text="F"
+               GridPane.columnIndex="4"  GridPane.rowIndex="1" />
+
+        <Label fx:id="g"
+               styleClass="keyboardTile" text="G"
+               GridPane.columnIndex="5"  GridPane.rowIndex="1" />
+
+        <Label fx:id="h"
+               styleClass="keyboardTile" text="H"
+               GridPane.columnIndex="6"  GridPane.rowIndex="1" />
+
+        <Label fx:id="j"
+               styleClass="keyboardTile" text="J"
+               GridPane.columnIndex="7"  GridPane.rowIndex="1" />
+
+        <Label fx:id="k"
+               styleClass="keyboardTile" text="K"
+               GridPane.columnIndex="8"  GridPane.rowIndex="1" />
+
+        <Label fx:id="l"
+               styleClass="keyboardTile" text="L"
+               GridPane.columnIndex="9"  GridPane.rowIndex="1" />
+
+        <!--ROW 3-->
+    </GridPane>
+    <GridPane vgap="5" hgap="5" alignment="center">
+
+        <Label fx:id="z"
+               styleClass="keyboardTile" text="Z"
+               GridPane.columnIndex="1"  GridPane.rowIndex="1" />
+
+        <Label fx:id="x"
+               styleClass="keyboardTile" text="X"
+               GridPane.columnIndex="2"  GridPane.rowIndex="1" />
+
+        <Label fx:id="c"
+               styleClass="keyboardTile" text="C"
+               GridPane.columnIndex="3"  GridPane.rowIndex="1" />
+
+        <Label fx:id="v"
+               styleClass="keyboardTile" text="V"
+               GridPane.columnIndex="4"  GridPane.rowIndex="1" />
+
+        <Label fx:id="b"
+               styleClass="keyboardTile" text="B"
+               GridPane.columnIndex="5"  GridPane.rowIndex="1" />
+
+        <Label fx:id="n"
+               styleClass="keyboardTile" text="N"
+               GridPane.columnIndex="6"  GridPane.rowIndex="1" />
+
+        <Label fx:id="m"
+               styleClass="keyboardTile" text="M"
+               GridPane.columnIndex="7"  GridPane.rowIndex="1" />
+
+    </GridPane>
 </VBox>

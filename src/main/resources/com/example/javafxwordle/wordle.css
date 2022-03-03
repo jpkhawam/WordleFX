@@ -81,3 +81,14 @@
     -fx-text-fill: -text-fill-color;
 }
 
+.keyboardTile {
+    -fx-background-color: -key-background-color;
+    -fx-text-fill: -text-fill-color;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-min-width: 43px;
+    -fx-min-height: 58px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-background-radius: 4px;
+}
