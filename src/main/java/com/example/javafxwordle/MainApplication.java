@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -27,17 +28,18 @@ public class MainApplication extends Application {
         mainController.createKeyboard();
         mainController.getRandomWord();
 
-//        double screenWidth = Screen.getPrimary().getBounds().getWidth();
-//        double screenHeight = Screen.getPrimary().getBounds().getHeight();
-        Scene scene = new Scene(root, 480, 750);
+        double screenWidth = Screen.getPrimary().getBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getBounds().getHeight();
+        Scene scene = new Scene(root, 480, 725);
         stage.setMinWidth(480);
-        stage.setMinHeight(750);
+        stage.setMinHeight(725);
+        stage.setMaxWidth(screenWidth);
+        stage.setMaxHeight(screenHeight);
         stage.setTitle("WordleFX");
         stage.setScene(scene);
         stage.show();
 
         mainController.gridRequestFocus();
-
     }
 
     public static void main(String[] args) {

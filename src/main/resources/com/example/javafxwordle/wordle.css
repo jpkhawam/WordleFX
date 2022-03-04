@@ -75,10 +75,10 @@
 }
 
 .title {
-    -fx-font-family: "Helvetica";
-    -fx-font-weight: 600;
-    -fx-font-size: 33px;
+    -fx-font-weight: 700;
+    -fx-font-size: 37px;
     -fx-text-fill: -text-fill-color;
+    -fx-font-family: "DejaVu Sans Condensed";
 }
 
 .keyboardTile {
@@ -96,15 +96,37 @@
 .keyboardCorrectColor {
     -fx-background-color: -correct-color;
     -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-min-width: 43px;
+    -fx-min-height: 58px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-background-radius: 4px;
 }
 
 .keyboardPresentColor {
     -fx-background-color: -present-color;
     -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-min-width: 43px;
+    -fx-min-height: 58px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-background-radius: 4px;
 }
 
 .keyboardWrongColor {
     -fx-background-color: -wrong-color;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-min-width: 43px;
+    -fx-min-height: 58px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+    -fx-background-radius: 4px;
 }
 
 .keyboardTileSymbol {
