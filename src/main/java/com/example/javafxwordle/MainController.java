@@ -2,6 +2,7 @@ package com.example.javafxwordle;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 public class MainController {
@@ -11,18 +12,18 @@ public class MainController {
     @FXML
     public GridPane gridPane;
     @FXML
-    public GridPane keyboardRow_first;
+    public GridPane keyboardRow1;
     @FXML
-    public GridPane keyboardRow_second;
+    public GridPane keyboardRow2;
     @FXML
-    public GridPane keyboardRow_third;
+    public GridPane keyboardRow3;
 
     public void createGrid() {
         mainHelper.createGrid(gridPane);
     }
 
     public void createKeyboard() {
-        mainHelper.createKeyboard(keyboardRow_first, keyboardRow_second, keyboardRow_third);
+        mainHelper.createKeyboard(keyboardRow1, keyboardRow2, keyboardRow3);
     }
 
     public void gridRequestFocus() {
@@ -31,7 +32,7 @@ public class MainController {
 
     @FXML
     protected void onKeyPressed(KeyEvent keyEvent) {
-        mainHelper.onKeyPressed(gridPane, keyEvent);
+        mainHelper.onKeyPressed(gridPane, keyboardRow1, keyboardRow2, keyboardRow3, keyEvent);
     }
 
     public void getRandomWord() {

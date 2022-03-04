@@ -1,5 +1,5 @@
 .root {
-    white-color: white;
+    -white-color: white;
     -wrong-color: #787c7e;
     -text-fill-color: black;
     -empty-border-color: #d3d6da;
@@ -93,7 +93,21 @@
     -fx-background-radius: 4px;
 }
 
-.keyboardTileBackspace {
+.keyboardCorrectColor {
+    -fx-background-color: -correct-color;
+    -fx-text-fill: white;
+}
+
+.keyboardPresentColor {
+    -fx-background-color: -present-color;
+    -fx-text-fill: white;
+}
+
+.keyboardWrongColor {
+    -fx-background-color: -wrong-color;
+}
+
+.keyboardTileSymbol {
     -fx-background-color: -key-background-color;
     -fx-text-fill: -text-fill-color;
     -fx-font-size: 25px;

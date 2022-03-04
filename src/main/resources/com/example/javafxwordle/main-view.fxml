@@ -39,7 +39,7 @@
         </padding>
     </GridPane>
 
-    <GridPane fx:id="keyboardRow_first"
+    <GridPane fx:id="keyboardRow1"
               alignment="BOTTOM_CENTER"
               hgap="4"
               vgap="2">
@@ -48,12 +48,12 @@
         </padding>
     </GridPane>
 
-    <GridPane fx:id="keyboardRow_second"
+    <GridPane fx:id="keyboardRow2"
               alignment="BOTTOM_CENTER"
               hgap="4"
               vgap="2"/>
 
-    <GridPane fx:id="keyboardRow_third"
+    <GridPane fx:id="keyboardRow3"
               alignment="BOTTOM_CENTER"
               hgap="4"
               vgap="2"/>
