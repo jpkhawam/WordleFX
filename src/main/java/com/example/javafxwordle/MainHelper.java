@@ -1,6 +1,7 @@
 package com.example.javafxwordle;
 
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -10,6 +11,7 @@ import java.util.*;
 
 import static com.example.javafxwordle.MainApplication.dictionaryWords;
 import static com.example.javafxwordle.MainApplication.winningWords;
+import static java.lang.Thread.sleep;
 
 public class MainHelper {
 
@@ -217,6 +219,8 @@ public class MainHelper {
             String guess = getWordFromCurrentRow(gridPane).toLowerCase();
             System.out.println(winningWord);
             if (guess.equals(winningWord)) {
+                updateRowColors(gridPane, CURRENT_ROW);
+                updateKeyboardColors(gridPane, keyboardRow1, keyboardRow2, keyboardRow3);
                 ScoreWindow.display(true, winningWord);
             } else if (isValidGuess(guess)) {
                 updateRowColors(gridPane, CURRENT_ROW);
@@ -228,6 +232,8 @@ public class MainHelper {
                 }
                 CURRENT_ROW++;
                 CURRENT_COLUMN = 1;
+            } else {
+                MainApplication.showToast();
             }
             if (ScoreWindow.resetGame.get()) {
                 resetGame(gridPane, keyboardRow1, keyboardRow2, keyboardRow3);

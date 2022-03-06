@@ -48,6 +48,10 @@ public class MainApplication extends Application {
         launch();
     }
 
+    public static void showToast() {
+        Toast.makeText(stageReference, 1500, 200, 200);
+    }
+
     public static void quit() {
         stageReference.close();
     }
