@@ -6,8 +6,6 @@
     -unlocked-border-color: #878a8c;
     -background-color: white;
     -key-background-color: #d3d6da;
-    -toast-background-color: black;
-    -toast-letter-color: -white-color;
     -present-color: #c9b458;
     -correct-color: #6aaa64;
 }
@@ -21,6 +19,8 @@
     -fx-border-width: 2px;
     -fx-min-width: 62px;
     -fx-min-height: 62px;
+    -fx-pref-width: 65px;
+    -fx-pref-height: 65px;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
@@ -38,6 +38,8 @@
     -fx-border-width: 2px;
     -fx-min-width: 62px;
     -fx-min-height: 62px;
+    -fx-pref-width: 65px;
+    -fx-pref-height: 65px;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
@@ -51,6 +53,8 @@
     -fx-border-width: 2px;
     -fx-min-width: 62px;
     -fx-min-height: 62px;
+    -fx-pref-width: 65px;
+    -fx-pref-height: 65px;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
@@ -64,6 +68,8 @@
     -fx-border-width: 2px;
     -fx-min-width: 62px;
     -fx-min-height: 62px;
+    -fx-pref-width: 65px;
+    -fx-pref-height: 65px;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
