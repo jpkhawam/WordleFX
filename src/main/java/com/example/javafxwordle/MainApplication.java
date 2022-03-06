@@ -49,7 +49,7 @@ public class MainApplication extends Application {
     }
 
     public static void showToast() {
-        Toast.makeText(stageReference, 1500, 200, 200);
+        Toast.makeText(stageReference);
     }
 
     public static void quit() {
