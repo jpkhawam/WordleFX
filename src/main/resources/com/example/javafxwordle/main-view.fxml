@@ -20,7 +20,7 @@
     <Label alignment="TOP_CENTER"
            text="WordleFX"
            textAlignment="CENTER"
-           styleClass="title">
+           fx:id="title">
         <padding>
             <Insets bottom="7.0" top="3.0"/>
         </padding>

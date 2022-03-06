@@ -1,10 +1,12 @@
 package com.example.javafxwordle;
 
+import javafx.animation.*;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 
 import java.util.*;
 
@@ -120,6 +122,7 @@ public class MainHelper {
     }
 
     private void updateRowColors(GridPane gridPane, int searchRow) {
+
         for (int i = 1; i <= MAX_COLUMN; i++) {
             Label label = getLabel(gridPane, searchRow, i);
             String styleClass;
@@ -132,8 +135,20 @@ public class MainHelper {
                 } else {
                     styleClass = "wrong-letter";
                 }
-                clearLabelStyleClass(gridPane, searchRow, i);
-                setLabelStyleClass(gridPane, searchRow, i, styleClass);
+
+                FadeTransition firstFadeTransition = new FadeTransition(Duration.millis(300), label);
+                firstFadeTransition.setFromValue(1);
+                firstFadeTransition.setToValue(0.2);
+                firstFadeTransition.setOnFinished(e -> {
+                    label.getStyleClass().clear();
+                    label.getStyleClass().setAll(styleClass);
+                });
+
+                FadeTransition secondFadeTransition = new FadeTransition(Duration.millis(300), label);
+                secondFadeTransition.setFromValue(0.2);
+                secondFadeTransition.setToValue(1);
+
+                new SequentialTransition(firstFadeTransition, secondFadeTransition).play();
             }
         }
     }
@@ -203,8 +218,21 @@ public class MainHelper {
     private void onLetterPressed(GridPane gridPane, KeyEvent keyEvent) {
         // this is to make it so that when the user types a letter but the row is full
         // it doesn't change the last letter instead
-        if (CURRENT_COLUMN != MAX_COLUMN || Objects.equals(getLabelText(gridPane, CURRENT_ROW, CURRENT_COLUMN), "")) {
+        if (Objects.equals(getLabelText(gridPane, CURRENT_ROW, CURRENT_COLUMN), "")) {
             setLabelText(gridPane, CURRENT_ROW, CURRENT_COLUMN, keyEvent.getText());
+            Label label = getLabel(gridPane, CURRENT_ROW, CURRENT_COLUMN);
+            ScaleTransition firstScaleTransition = new ScaleTransition(Duration.millis(100), label);
+            firstScaleTransition.fromXProperty().setValue(1);
+            firstScaleTransition.toXProperty().setValue(1.1);
+            firstScaleTransition.fromYProperty().setValue(1);
+            firstScaleTransition.toYProperty().setValue(1.1);
+            ScaleTransition secondScaleTransition = new ScaleTransition(Duration.millis(100), label);
+            secondScaleTransition.fromXProperty().setValue(1.1);
+            secondScaleTransition.toXProperty().setValue(1);
+            secondScaleTransition.fromYProperty().setValue(1.1);
+            secondScaleTransition.toYProperty().setValue(1);
+            new SequentialTransition(firstScaleTransition, secondScaleTransition).play();
+
             setLabelStyleClass(gridPane, CURRENT_ROW, CURRENT_COLUMN, "tile-with-letter");
             if (CURRENT_COLUMN < MAX_COLUMN)
                 CURRENT_COLUMN++;
