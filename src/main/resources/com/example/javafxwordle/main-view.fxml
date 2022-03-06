@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import java.net.URL?>
+<?import javafx.scene.shape.*?>
 
-<?import javafx.scene.shape.Line?>
-<VBox xmlns:fx="http://javafx.com/fxml/1"
-      xmlns="http://javafx.com/javafx/16"
-      styleClass="main-screen"
-      fx:controller="com.example.javafxwordle.MainController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<BorderPane
+        xmlns:fx="http://javafx.com/fxml/1"
+        maxHeight="Infinity"
+        maxWidth="Infinity"
+        prefHeight="715"
+        prefWidth="500"
+        styleClass="main-screen"
+        xmlns="http://javafx.com/javafx/16"
+        fx:controller="com.example.javafxwordle.MainController">
+
     <stylesheets>
         <URL value="@wordle.css"/>
     </stylesheets>
 
-    <Label alignment="TOP_CENTER"
-           text="WordleFX"
-           textAlignment="CENTER"
-           fx:id="title">
-        <padding>
-            <Insets bottom="7.0" top="3.0"/>
-        </padding>
-    </Label>
+    <top>
+        <VBox alignment="TOP_CENTER" minWidth="480.0">
+            <Label fx:id="title" alignment="TOP_CENTER" minWidth="480.0" prefHeight="50.0" text="WordleFX">
+                <padding>
+                    <Insets bottom="5.0"/>
+                </padding>
+            </Label>
 
-    <Line endX="2000"
-          stroke="#b8b8b8"/>
+            <Line endX="2000" stroke="#b8b8b8"/>
+        </VBox>
+    </top>
 
-    <GridPane fx:id="gridPane"
-              alignment="TOP_CENTER"
-              hgap="5"
-              vgap="5"
-              onKeyPressed="#onKeyPressed">
-        <padding>
-            <Insets bottom="15" top="15.0"/>
-        </padding>
-    </GridPane>
+    <center>
+        <GridPane fx:id="gridPane" alignment="CENTER" hgap="5" onKeyPressed="#onKeyPressed" vgap="5">
+            <BorderPane.margin>
+                <Insets bottom="15.0" top="15.0"/>
+            </BorderPane.margin>
+        </GridPane>
+    </center>
 
-    <GridPane fx:id="keyboardRow1"
-              alignment="BOTTOM_CENTER"
-              hgap="4"
-              vgap="2">
-        <padding>
-            <Insets top="10.0"/>
-        </padding>
-    </GridPane>
+    <bottom>
+        <VBox>
+            <GridPane fx:id="keyboardRow1" alignment="BOTTOM_CENTER" hgap="4" vgap="2">
+                <padding>
+                    <Insets top="10.0"/>
+                </padding>
+            </GridPane>
 
-    <GridPane fx:id="keyboardRow2"
-              alignment="BOTTOM_CENTER"
-              hgap="4"
-              vgap="2"/>
+            <GridPane fx:id="keyboardRow2" alignment="BOTTOM_CENTER" hgap="4" vgap="2"/>
 
-    <GridPane fx:id="keyboardRow3"
-              alignment="BOTTOM_CENTER"
-              hgap="4"
-              vgap="2"/>
+            <GridPane fx:id="keyboardRow3" alignment="BOTTOM_CENTER" hgap="4" vgap="2">
+                <padding>
+                    <Insets bottom="10.0"/>
+                </padding>
+            </GridPane>
+        </VBox>
+    </bottom>
 
-</VBox>
+</BorderPane>

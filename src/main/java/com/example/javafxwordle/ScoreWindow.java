@@ -29,7 +29,7 @@ public class ScoreWindow {
         stage.setMaxWidth(500);
         stage.setMaxHeight(460);
 
-        VBox root = new VBox(30);
+        VBox root = new VBox(15);
         root.setAlignment(Pos.CENTER);
 
         Label label = new Label();
@@ -37,9 +37,14 @@ public class ScoreWindow {
             label.setText("Congrats!");
             label.getStyleClass().setAll("lead", "text-success", "big-font");
         } else {
-            label.setText("Sorry! The winning word was " + winningWord.toUpperCase());
-            label.getStyleClass().setAll("lead", "text-warning", "big-font");
+            label.setText("The winning word was");
+            label.getStyleClass().setAll("lead", "text-warning", "medium-font");
         }
+        Label winningWordLabel = new Label(winningWord.toUpperCase());
+        winningWordLabel.getStyleClass().setAll("h3");
+        winningWordLabel.setVisible(false);
+        if (!guessed)
+            winningWordLabel.setVisible(true);
 
         Button playAgain = new Button("PLAY AGAIN");
         playAgain.getStyleClass().setAll("btn", "btn-primary");
@@ -48,7 +53,7 @@ public class ScoreWindow {
             stage.close();
         });
 
-        Button quitButton = new Button("QUIT");
+        Button quitButton = new Button("  QUIT");
         quitButton.getStyleClass().setAll("btn", "btn-warning");
         quitButton.setOnMouseClicked(me -> {
             resetGame.set(false);
@@ -56,7 +61,7 @@ public class ScoreWindow {
             stage.close();
         });
 
-        root.getChildren().addAll(label, playAgain, quitButton);
+        root.getChildren().addAll(label, winningWordLabel, playAgain, quitButton);
         Scene scene = new Scene(root, 300, 260);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         scene.getStylesheets()
