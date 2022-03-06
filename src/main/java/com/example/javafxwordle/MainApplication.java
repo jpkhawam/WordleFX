@@ -17,10 +17,12 @@ public class MainApplication extends Application {
     public static final ArrayList<String> winningWords = new ArrayList<>();
     public static final ArrayList<String> dictionaryWords = new ArrayList<>();
 
+    private static Stage stageReference;
+
     @Override
     public void start(Stage stage) throws IOException {
         initializeWordLists();
-
+        stageReference = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
         Parent root = fxmlLoader.load();
         MainController mainController = fxmlLoader.getController();
@@ -44,6 +46,10 @@ public class MainApplication extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public static void quit() {
+        stageReference.close();
     }
 
     public void initializeWordLists() throws IOException {

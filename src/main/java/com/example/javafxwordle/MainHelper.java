@@ -215,12 +215,26 @@ public class MainHelper {
                                 GridPane keyboardRow3) {
         if (CURRENT_ROW <= MAX_ROW && CURRENT_COLUMN == MAX_COLUMN) {
             String guess = getWordFromCurrentRow(gridPane).toLowerCase();
-            if (isValidGuess(guess)) {
+            System.out.println(winningWord);
+            if (guess.equals(winningWord)) {
+                ScoreWindow.display(true, winningWord);
+            } else if (isValidGuess(guess)) {
                 updateRowColors(gridPane, CURRENT_ROW);
                 updateKeyboardColors(gridPane, keyboardRow1, keyboardRow2, keyboardRow3);
+                if (CURRENT_ROW == MAX_ROW) {
+                    ScoreWindow.display(false, winningWord);
+                    if (ScoreWindow.resetGame.get())
+                        resetGame(gridPane, keyboardRow1, keyboardRow2, keyboardRow3);
+                }
                 CURRENT_ROW++;
                 CURRENT_COLUMN = 1;
             }
+            if (ScoreWindow.resetGame.get()) {
+                resetGame(gridPane, keyboardRow1, keyboardRow2, keyboardRow3);
+                ScoreWindow.resetGame.set(false);
+            }
+            if (ScoreWindow.quitApplication.get())
+                MainApplication.quit();
         }
     }
 
@@ -230,6 +244,43 @@ public class MainHelper {
 
     private boolean isValidGuess(String guess) {
         return binarySearch(winningWords, guess) || binarySearch(dictionaryWords, guess);
+    }
+
+    private void resetGame(GridPane gridPane, GridPane keyboardRow1, GridPane keyboardRow2,
+                           GridPane keyboardRow3) {
+        getRandomWord();
+        Label label;
+        for (Node child : gridPane.getChildren())
+            if (child instanceof Label) {
+                label = (Label) child;
+                label.getStyleClass().clear();
+                label.setText("");
+                label.getStyleClass().add("default-tile");
+            }
+
+        for (Node child : keyboardRow1.getChildren())
+            if (child instanceof Label) {
+                label = (Label) child;
+                label.getStyleClass().clear();
+                label.getStyleClass().add("keyboardTile");
+            }
+
+        for (Node child : keyboardRow2.getChildren())
+            if (child instanceof Label) {
+                label = (Label) child;
+                label.getStyleClass().clear();
+                label.getStyleClass().add("keyboardTile");
+            }
+
+        for (Node child : keyboardRow3.getChildren())
+            if (child instanceof Label) {
+                label = (Label) child;
+                label.getStyleClass().clear();
+                label.getStyleClass().add("keyboardTile");
+            }
+
+        CURRENT_COLUMN = 1;
+        CURRENT_ROW = 1;
     }
 
     private boolean binarySearch(ArrayList<String> list, String string) {

@@ -139,3 +139,7 @@
     -fx-alignment: center;
     -fx-background-radius: 4px;
 }
+
+.big-font {
+    -fx-font-size: 30px;
+}
