@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -11,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainApplication extends Application {
 
@@ -25,10 +27,14 @@ public class MainApplication extends Application {
         stageReference = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-view.fxml"));
         Parent root = fxmlLoader.load();
+
         MainController mainController = fxmlLoader.getController();
-        mainController.createGrid();
-        mainController.createKeyboard();
+        mainController.createUI();
         mainController.getRandomWord();
+        mainController.helpIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("images/help.png"))));
+        mainController.githubIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("images/github.png"))));
+
+        mainController.githubIcon.setOnMouseClicked(me -> getHostServices().showDocument("https://github.com/jpkhawam/WordleFX"));
 
         double screenWidth = Screen.getPrimary().getBounds().getWidth();
         double screenHeight = Screen.getPrimary().getBounds().getHeight();

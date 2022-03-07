@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
 import java.util.*;
@@ -34,6 +35,22 @@ public class MainHelper {
         if (INSTANCE == null)
             INSTANCE = new MainHelper();
         return INSTANCE;
+    }
+
+    public void createTitleHBox(HBox titleHBox) {
+        ArrayList<Label> titleLetters = new ArrayList<>();
+        for (String letter : new String[]{"W", "O", "R", "D", "L", "E"}) {
+            Label label = new Label(letter);
+            if (letter.equals("W") || letter.equals("L"))
+                label.getStyleClass().setAll("correct-letter-example");
+            else if (letter.equals("R"))
+                label.getStyleClass().setAll("present-letter-example");
+            else
+                label.getStyleClass().setAll("wrong-letter-example");
+            titleLetters.add(label);
+        }
+        for (Label label : titleLetters)
+            titleHBox.getChildren().add(label);
     }
 
     public void createGrid(GridPane gridPane) {

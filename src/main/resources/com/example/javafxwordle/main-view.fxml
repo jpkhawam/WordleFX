@@ -2,35 +2,43 @@
 
 <?import java.net.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<BorderPane maxHeight="Infinity" maxWidth="Infinity" prefHeight="715" prefWidth="500" styleClass="main-screen" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxwordle.MainController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="Infinity" maxWidth="Infinity" prefHeight="715"
+            prefWidth="500"
+            styleClass="main-screen" xmlns="http://javafx.com/javafx/16"
+            fx:controller="com.example.javafxwordle.MainController">
 
     <stylesheets>
-        <URL value="@wordle.css" />
+        <URL value="@wordle.css"/>
     </stylesheets>
-
-    <ImageView fx:id="githubImage" fitHeight="32" fitWidth="32" onMouseClicked="#showHelp" />
 
     <top>
         <VBox alignment="TOP_CENTER" minWidth="480.0">
-            <Label fx:id="title" alignment="TOP_CENTER" minWidth="480.0" onMouseClicked="#showHelp" prefHeight="50.0" text="WordleFX">
-                <padding>
-                    <Insets bottom="5.0" />
-                </padding>
-            </Label>
 
-            <Line endX="2000" stroke="#b8b8b8" />
+            <HBox alignment="CENTER">
+                <padding>
+                    <Insets left="30" />
+                </padding>
+                <ImageView fx:id="githubIcon" fitHeight="32" fitWidth="32" GridPane.columnIndex="1"/>
+                <ImageView fx:id="helpIcon" fitHeight="32" fitWidth="32" onMouseClicked="#showHelp" />
+                <HBox fx:id="titleHBox" alignment="CENTER"  prefHeight="50.0" >
+                    <padding>
+                        <Insets left="30" bottom="8" right="130"/>
+                    </padding>
+                </HBox>
+            </HBox>
+
+            <Line endX="2000" stroke="#b8b8b8"/>
         </VBox>
     </top>
 
     <center>
         <GridPane fx:id="gridPane" alignment="CENTER" hgap="5" onKeyPressed="#onKeyPressed" vgap="5">
             <BorderPane.margin>
-                <Insets bottom="15.0" top="15.0" />
+                <Insets bottom="15.0" top="15.0"/>
             </BorderPane.margin>
         </GridPane>
     </center>
@@ -39,15 +47,15 @@
         <VBox>
             <GridPane fx:id="keyboardRow1" alignment="BOTTOM_CENTER" hgap="4" vgap="2">
                 <padding>
-                    <Insets top="10.0" />
+                    <Insets top="10.0"/>
                 </padding>
             </GridPane>
 
-            <GridPane fx:id="keyboardRow2" alignment="BOTTOM_CENTER" hgap="4" vgap="2" />
+            <GridPane fx:id="keyboardRow2" alignment="BOTTOM_CENTER" hgap="4" vgap="2"/>
 
             <GridPane fx:id="keyboardRow3" alignment="BOTTOM_CENTER" hgap="4" vgap="2">
                 <padding>
-                    <Insets bottom="10.0" />
+                    <Insets bottom="10.0"/>
                 </padding>
             </GridPane>
         </VBox>
