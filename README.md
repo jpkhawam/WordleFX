@@ -27,4 +27,4 @@ MainApplication.java is responsible for starting the app, and for calling the re
 - `winning-words.txt` contains all the words that the app will choose between. Do note I sorted them so that I could use a binarySearch instead of something like .contains().
 
 ## What needs fixing?
-Besides missing the dark/colorblind modes and statistics, Pseudoclasses could be implemented to better switch between node styles. Also, the Toast appearing stops you from typing until it is gone (after a second). 
+Besides missing the dark/colorblind modes and statistics, Pseudoclasses could be implemented to better switch between node styles. Also, the Toast appearing stops you from typing until it is gone (after a second). Also, there isn't an easy way to make a listener for the on screen keyboard clicks. The best is getting where the mouse click coordinates were and then checking which label was there, I will pass on doing that nonsense though.
