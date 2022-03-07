@@ -2,9 +2,14 @@ package com.example.javafxwordle;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import org.kordamp.bootstrapfx.BootstrapFX;
+
+import java.util.Objects;
 
 public class MainController {
 
@@ -20,11 +25,21 @@ public class MainController {
     public GridPane keyboardRow2;
     @FXML
     public GridPane keyboardRow3;
+    @FXML
+    public ImageView githubImage;
 
     public void createGrid() {
         mainHelper.createGrid(gridPane);
         title.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         title.getStyleClass().setAll("h1", "strong");
+      //  createImages();
+    }
+
+    public void createImages() {
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("images/GitHub-Mark-32px.png")));
+        githubImage.setImage(image);
+        githubImage.setX(10);
+        githubImage.setY(15);
     }
 
     public void createKeyboard() {
@@ -42,5 +57,9 @@ public class MainController {
 
     public void getRandomWord() {
         mainHelper.getRandomWord();
+    }
+
+    public void showHelp(MouseEvent mouseEvent) {
+        HelpWindow.display();
     }
 }

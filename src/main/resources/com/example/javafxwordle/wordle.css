@@ -141,3 +141,68 @@
 .big-font {
     -fx-font-size: 22px;
 }
+
+.image-dimensions {
+    -fx-pref-height: 20;
+    -fx-pref-width: 20;
+}
+
+.correct-letter-example {
+    -fx-background-color: -correct-color;
+    -fx-border-color: -correct-color;
+    -fx-text-fill: white;
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-border-width: 1px;
+    -fx-min-width: 45px;
+    -fx-min-height: 45px;
+    -fx-pref-width: 45px;
+    -fx-pref-height: 45px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.default-letter-example {
+    -fx-background-color: -background-color;
+    -fx-border-color: -empty-border-color;
+    -fx-text-fill: -text-fill-color;
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-border-width: 1px;
+    -fx-min-width: 45px;
+    -fx-min-height: 45px;
+    -fx-pref-width: 45px;
+    -fx-pref-height: 45px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.present-letter-example {
+    -fx-background-color: -present-color;
+    -fx-border-color: -present-color;
+    -fx-text-fill: white;
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-border-width: 1px;
+    -fx-min-width: 45px;
+    -fx-min-height: 45px;
+    -fx-pref-width: 45px;
+    -fx-pref-height: 45px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.wrong-letter-example {
+    -fx-background-color: -wrong-color;
+    -fx-border-color: -wrong-color;
+    -fx-text-fill: white;
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-border-width: 1px;
+    -fx-min-width: 45px;
+    -fx-min-height: 45px;
+    -fx-pref-width: 45px;
+    -fx-pref-height: 45px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
