@@ -139,9 +139,5 @@
 }
 
 .big-font {
-    -fx-font-size: 30px;
-}
-
-.medium-font {
-    -fx-font-size: 18px;
+    -fx-font-size: 22px;
 }

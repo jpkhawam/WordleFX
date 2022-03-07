@@ -24,7 +24,7 @@ public class MainController {
     public void createGrid() {
         mainHelper.createGrid(gridPane);
         title.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-        title.getStyleClass().setAll("h1");
+        title.getStyleClass().setAll("h1", "strong");
     }
 
     public void createKeyboard() {

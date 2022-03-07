@@ -32,23 +32,23 @@ public class ScoreWindow {
         VBox root = new VBox(15);
         root.setAlignment(Pos.CENTER);
 
-        Label label = new Label();
+        Label mainLabel = new Label();
         if (guessed) {
-            label.setText("Congrats!");
-            label.getStyleClass().setAll("lead", "text-success", "big-font");
+            mainLabel.setText("           You won! \n The winning word was");
+            mainLabel.getStyleClass().setAll("lead", "text-success", "big-font");
         } else {
-            label.setText("The winning word was");
-            label.getStyleClass().setAll("lead", "text-warning", "medium-font");
+            mainLabel.setText("           You lost! \n The winning word was");
+            mainLabel.getStyleClass().setAll("lead", "text-warning", "big-font");
         }
         Label winningWordLabel = new Label(winningWord.toUpperCase());
-        winningWordLabel.getStyleClass().setAll("h3");
-        winningWordLabel.setVisible(false);
-        if (!guessed)
-            winningWordLabel.setVisible(true);
+        winningWordLabel.getStyleClass().setAll("h2", "strong");
 
-        Button playAgain = new Button("PLAY AGAIN");
-        playAgain.getStyleClass().setAll("btn", "btn-primary");
-        playAgain.setOnMouseClicked(me -> {
+        VBox buttonsVBox = new VBox(5);
+        buttonsVBox.setAlignment(Pos.CENTER);
+
+        Button playAgainButton = new Button("PLAY AGAIN");
+        playAgainButton.getStyleClass().setAll("btn", "btn-primary");
+        playAgainButton.setOnMouseClicked(me -> {
             resetGame.set(true);
             stage.close();
         });
@@ -61,7 +61,9 @@ public class ScoreWindow {
             stage.close();
         });
 
-        root.getChildren().addAll(label, winningWordLabel, playAgain, quitButton);
+        buttonsVBox.getChildren().addAll(playAgainButton, quitButton);
+
+        root.getChildren().addAll(mainLabel, winningWordLabel, buttonsVBox);
         Scene scene = new Scene(root, 300, 260);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         scene.getStylesheets()
