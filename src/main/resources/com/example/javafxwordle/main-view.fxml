@@ -8,7 +8,7 @@
 
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="Infinity" maxWidth="Infinity" prefHeight="715"
             prefWidth="500"
-            styleClass="main-screen" xmlns="http://javafx.com/javafx/16"
+            styleClass="main-screen" xmlns="http://javafx.com/javafx/11"
             fx:controller="com.example.javafxwordle.MainController">
 
     <stylesheets>
