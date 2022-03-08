@@ -33,7 +33,7 @@ public final class Toast {
         stage.setScene(scene);
         stage.show();
 
-        FadeTransition fadeTransition = new FadeTransition(Duration.millis(1300), root);
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(750), root);
         fadeTransition.setFromValue(0.75);
         fadeTransition.setToValue(1);
         fadeTransition.setOnFinished(e -> stage.close());
