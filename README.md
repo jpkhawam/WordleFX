@@ -6,9 +6,9 @@
 
 ------
 
-### A Wordle clone, built in JavaFX, with plain Java, FXML and CSS. 
+## A Wordle clone, built in JavaFX, with plain Java, FXML and CSS. 
 
-<img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-1.png" alt="screenshot" height="570"/> <img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-2.png" alt="screenshot" height="550"/>
+<img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-1.png" alt="screenshot" height="500"/> <img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-2.png" alt="screenshot" height="500"/> <img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-3.png" alt="screenshot" height="500"/>
 
 ------
 
