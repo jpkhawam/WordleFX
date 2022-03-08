@@ -10,6 +10,7 @@
 <p align="center">
 <img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-1.png" alt="screenshot" height="500"/> <img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-2.png" alt="screenshot" height="500"/> 
 </p>
+
 ------
 
 # How does it work?
