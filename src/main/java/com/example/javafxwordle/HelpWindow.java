@@ -40,7 +40,7 @@ public class HelpWindow {
         labelExample.getStyleClass().setAll("h3");
         labelExample.setTextAlignment(TextAlignment.LEFT);
 
-        /** FIRST WORD **/
+        /* FIRST WORD */
 
         ArrayList<Label> firstWord = new ArrayList<>();
         Label label1 = new Label("W");
@@ -57,7 +57,7 @@ public class HelpWindow {
         Label firstWordLabel = new Label("The letter W is in the word and in the correct spot.");
         firstWordLabel.getStyleClass().setAll("lead");
 
-        /** SECOND WORD **/
+        /* SECOND WORD */
 
         ArrayList<Label> secondWord = new ArrayList<>();
         Label labelP = new Label("P");
@@ -76,7 +76,7 @@ public class HelpWindow {
         Label secondWordLabel = new Label("The letter I is in the word but in the wrong spot.");
         secondWordLabel.getStyleClass().setAll("lead");
 
-        /** THIRD WORD **/
+        /* THIRD WORD */
 
         ArrayList<Label> thirdWord = new ArrayList<>();
         for(String letter: new String[]{"V", "A", "G"}) {
@@ -102,9 +102,7 @@ public class HelpWindow {
         Button goBackButton = new Button("GO BACK");
         goBackButton.getStyleClass().setAll("btn", "btn-primary");
 
-        goBackButton.setOnMouseClicked(me -> {
-            stage.close();
-        });
+        goBackButton.setOnMouseClicked(me -> stage.close());
 
         root.setAlignment(Pos.TOP_CENTER);
         root.getChildren().addAll(helpParagraph, line1, labelExample, firstWordVBox,
