@@ -1,8 +1,17 @@
-# WordleFX
+<p align="center">
+  
+<img src="https://github.com/jpkhawam/WordleFX/blob/master/images/github.png" align="center" alt="screenshot" />
+  
+</p>
 
-### A simple Wordle clone, built in JavaFX, with plain Java, FXML and CSS.
-<img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-1.png" alt="screenshot" height="570"/> <img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-2.png" alt="screenshot" height="550"/>
 ------
+
+### A Wordle clone, built in JavaFX, with plain Java, FXML and CSS. 
+
+<img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-1.png" alt="screenshot" height="570"/> <img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-2.png" alt="screenshot" height="550"/>
+
+------
+
 # How does it work?
 I took the wordle list of winning words (words that'll come up some day, pre-NYT acquisition), and the list of all recognized words that the user is able to guess.
 On launch, a random word will be picked from the winning list, rather than having one word per day only.
