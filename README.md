@@ -24,11 +24,11 @@ Why not?
 
 1- Make sure you have a Java Runtime Environment (JRE) downloaded that includes JavaFX. I would recommend the [Bellsoft Liberica JDK 11](https://bell-sw.com/pages/downloads/#/java-11-lts). It is free and open source. If you don't plan on developing anything in Java, download the standard JRE, else download the JDK.
 
-2- Once your JRE or JDK is downloaded, download WordleFX-v1.0.0.jar from [the releases page](https://github.com/jpkhawam/WordleFX/releases/tag/v1.0.0).
+2- Once your JRE or JDK is downloaded, download WordleFX-v1.0.0.jar from [the releases page](https://github.com/jpkhawam/WordleFX/releases/tag/v1.1.0).
 
 3- On Linux and MacOS, open your terminal/console app, in Windows open CMD, and type the following command
 
-`java -jar WordleFX-v1.0.0.jar` (or whatever the .jar file is named).
+`java -jar WordleFX-v1.1.0.jar` (or whatever the .jar file is named).
 
 This should run it. If it doesn't, make sure you have restarted after downloading Java, else something went wrong with the installation.
 
