@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -35,10 +36,10 @@ public class ScoreWindow {
         Label mainLabel = new Label();
         if (guessed) {
             mainLabel.setText("           You won! \n The winning word was");
-            mainLabel.getStyleClass().setAll("lead", "text-success", "big-font");
+            mainLabel.getStyleClass().setAll("lead", "big-font");
         } else {
             mainLabel.setText("           You lost! \n The winning word was");
-            mainLabel.getStyleClass().setAll("lead", "text-warning", "big-font");
+            mainLabel.getStyleClass().setAll("big-font");
         }
         Label winningWordLabel = new Label(winningWord.toUpperCase());
         winningWordLabel.getStyleClass().setAll("h2", "strong");
@@ -69,6 +70,7 @@ public class ScoreWindow {
         scene.getStylesheets()
                 .add(Objects.requireNonNull(ScoreWindow.class.getResource("wordle.css"))
                         .toExternalForm());
+        stage.getIcons().add(new Image(Objects.requireNonNull(ScoreWindow.class.getResourceAsStream("images/icon.png"))));
         stage.setScene(scene);
         stage.showAndWait();
     }

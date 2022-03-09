@@ -5,6 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -113,6 +114,8 @@ public class HelpWindow {
         scene.getStylesheets()
                 .add(Objects.requireNonNull(ScoreWindow.class.getResource("wordle.css"))
                         .toExternalForm());
+
+        stage.getIcons().add(new Image(Objects.requireNonNull(HelpWindow.class.getResourceAsStream("images/help.png"))));
         stage.setScene(scene);
         stage.showAndWait();
     }

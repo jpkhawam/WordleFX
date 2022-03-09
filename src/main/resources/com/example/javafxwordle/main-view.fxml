@@ -20,15 +20,29 @@
 
             <HBox alignment="CENTER">
                 <padding>
-                    <Insets left="30" />
+                    <Insets left="30" bottom="8" />
                 </padding>
-                <ImageView fx:id="githubIcon" fitHeight="32" fitWidth="32" GridPane.columnIndex="1"/>
-                <ImageView fx:id="helpIcon" fitHeight="32" fitWidth="32" onMouseClicked="#showHelp" />
+                <Pane>
+                    <padding>
+                        <Insets right="7" />
+                    </padding>
+                    <ImageView fx:id="githubIcon" fitHeight="32" fitWidth="32" />
+                </Pane>
+                <Pane>
+                    <ImageView fx:id="helpIcon" fitHeight="32" fitWidth="32" onMouseClicked="#showHelp" />
+                </Pane>
                 <HBox fx:id="titleHBox" alignment="CENTER"  prefHeight="50.0" >
                     <padding>
-                        <Insets left="30" bottom="8" right="130"/>
+                        <Insets left="27" bottom="8" right="30"/>
                     </padding>
                 </HBox>
+                <Pane>
+                    <ImageView fx:id="restartIcon" fitHeight="40" fitWidth="40" onMouseClicked="#restart" />
+                </Pane>
+
+               <padding>
+                   <Insets right="35" />
+               </padding>
             </HBox>
 
             <Line endX="2000" stroke="#b8b8b8"/>

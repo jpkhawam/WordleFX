@@ -32,7 +32,7 @@ public class MainApplication extends Application {
         mainController.getRandomWord();
         mainController.helpIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("images/help.png"))));
         mainController.githubIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("images/github.png"))));
-
+        mainController.restartIcon.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("images/icons8-restart-40.png"))));
         mainController.githubIcon.setOnMouseClicked(me -> getHostServices().showDocument("https://github.com/jpkhawam/WordleFX"));
 
         double screenWidth = Screen.getPrimary().getBounds().getWidth();

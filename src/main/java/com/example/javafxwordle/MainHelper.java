@@ -294,7 +294,7 @@ public class MainHelper {
         return binarySearch(winningWords, guess) || binarySearch(dictionaryWords, guess);
     }
 
-    private void resetGame(GridPane gridPane, GridPane keyboardRow1, GridPane keyboardRow2,
+    public void resetGame(GridPane gridPane, GridPane keyboardRow1, GridPane keyboardRow2,
                            GridPane keyboardRow3) {
         getRandomWord();
         Label label;
