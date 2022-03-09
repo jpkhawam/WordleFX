@@ -20,6 +20,18 @@ On launch, a random word will be picked from the winning list, rather than havin
 # Why?
 Why not?
 
+# Installation
+
+1- Make sure you have a Java Runtime Environment (JRE) downloaded that includes JavaFX. I would recommend the [Bellsoft Liberica JDK 11](https://bell-sw.com/pages/downloads/#/java-11-lts). It is free and open source. If you don't plan on developing anything in Java, download the standard JRE, else download the JDK.
+
+2- Once your JRE or JDK is downloaded, download WordleFX-v1.0.0.jar from [the releases page](https://github.com/jpkhawam/WordleFX/releases/tag/v1.0.0).
+
+3- On Linux and MacOS, open your terminal/console app, in Windows open CMD, and type the following command
+
+`java -jar WordleFX-v1.0.0.jar` (or whatever the .jar file is named).
+
+This should run it. If it doesn't, make sure you have restarted after downloading Java, else something went wrong with the installation.
+
 # What is missing?
 Well, the animations in JavaFX are... _weird_. I can not have each letter wait for the other to reveal itself, so for the sake of not looking like a 2007 Powerpoint, letters will fade in/fade out when guessed. Also, I have yet to add dark mode, or colorblind mode. I'm colorblind myself but seeing well so it's alright for now, it is needed more for dark mode. Statistics and such are also not made yet, might do it soon.
 
