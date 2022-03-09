@@ -43,6 +43,7 @@ public class MainApplication extends Application {
         stage.setMaxWidth(screenWidth);
         stage.setMaxHeight(screenHeight);
         stage.setTitle("WordleFX");
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("images/icon.png"))));
         stage.setScene(scene);
         stage.show();
 
