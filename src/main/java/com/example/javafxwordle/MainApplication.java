@@ -8,11 +8,10 @@ import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class MainApplication extends Application {
 
@@ -62,21 +61,14 @@ public class MainApplication extends Application {
         stageReference.close();
     }
 
-    public void initializeWordLists() throws IOException {
-        FileReader winningWordsFileReader =
-                new FileReader("src/main/resources/com/example/javafxwordle/winning-words.txt");
-        FileReader dictionaryWordsFileReader =
-                new FileReader("src/main/resources/com/example/javafxwordle/dictionary.txt");
-        BufferedReader winningWordsReader =
-                new BufferedReader(winningWordsFileReader);
-        BufferedReader dictionaryWordsReader =
-                new BufferedReader(dictionaryWordsFileReader);
+    public void initializeWordLists() {
+        InputStream winning_words = getClass().getResourceAsStream("winning-words.txt");
+        Stream<String> winning_words_lines = new BufferedReader(new InputStreamReader(winning_words)).lines();
+        winning_words_lines.forEach(winningWords::add);
 
-        String input;
-        while ((input = winningWordsReader.readLine()) != null)
-            winningWords.add(input);
-        while ((input = dictionaryWordsReader.readLine()) != null)
-            dictionaryWords.add(input);
+        InputStream dictionary = getClass().getResourceAsStream("dictionary.txt");
+        Stream<String> dictionary_lines = new BufferedReader(new InputStreamReader(dictionary)).lines();
+        dictionary_lines.forEach(dictionaryWords::add);
     }
 
 }

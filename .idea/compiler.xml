@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="JavaFX-Wordle" />
+        <module name="WordleFX" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="JavaFX-Wordle" target="11" />
+      <module name="WordleFX" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
