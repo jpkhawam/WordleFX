@@ -17,20 +17,20 @@
 I took the wordle list of winning words (words that'll come up some day, pre-NYT acquisition), and the list of all recognized words that the user is able to guess.
 On launch, a random word will be picked from the winning list, rather than having one word per day only.
 
-# Why?
-Why not?
-
 # Installation
 
-1- Make sure you have a Java Runtime Environment (JRE) downloaded that includes JavaFX. I would recommend the [Bellsoft Liberica JDK 11](https://bell-sw.com/pages/downloads/#/java-11-lts). It is free and open source. If you don't plan on developing anything in Java, download the standard JRE, else download the JDK.
+1- Make sure you have a Java Runtime Environment (JRE) downloaded that includes JavaFX. I would recommend [Bellsoft Liberica 11](https://bell-sw.com/pages/downloads/#/java-11-lts). (**NOTE** you need the **FULL** JRE or JDK, not the standard, you can change in the drop down which version you are downloading).
+If you don't plan on developing anything in Java, download the full JRE, else download the full JDK.
 
 2- Once your JRE or JDK is downloaded, download WordleFX-v1.1.0.jar from [the releases page](https://github.com/jpkhawam/WordleFX/releases/tag/v1.1.0).
 
-3- On Linux and MacOS, open your terminal/console app, in Windows open CMD, and type the following command
+3- On Linux and MacOS, open your terminal/console app, in Windows open CMD. You must navigate in your terminal to where you downloaded the .jar file. You can either do that by right clicking inside the folder where it is downloaded and select "Open in Terminal", or navigate to it from where your terminal currently is (for example, if it is downloaded in /Downloads, the command `cd Downloads` navigates you there.) Then, to run the application, run this command:
 
 `java -jar WordleFX-v1.1.0.jar` (or whatever the .jar file is named).
 
-This should run it. If it doesn't, make sure you have restarted after downloading Java, else something went wrong with the installation.
+Closing the terminal would also close the application.
+
+This should run it. If it doesn't, make sure you have restarted after downloading your JRE.
 
 # What is missing?
 Well, the animations in JavaFX are... _weird_. I can not have each letter wait for the other to reveal itself, so for the sake of not looking like a 2007 Powerpoint, letters will fade in/fade out when guessed. Also, I have yet to add dark mode, or colorblind mode. I'm colorblind myself but seeing well so it's alright for now, it is needed more for dark mode. Statistics and such are also not made yet, might do it soon.
