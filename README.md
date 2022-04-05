@@ -6,7 +6,7 @@
 
 ------
 
-## A Wordle clone, built in JavaFX, with plain Java, FXML and CSS. 
+## A Wordle clone, built in JavaFX, with Java, FXML and CSS. 
 <p align="center">
 <img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-1.png" alt="screenshot" height="500"/> <img src="https://github.com/jpkhawam/WordleFX/blob/master/images/screenshot-2.png" alt="screenshot" height="500"/> 
 </p>
@@ -19,7 +19,7 @@ On launch, a random word will be picked from the winning list, rather than havin
 
 # Installation
 
-1- Make sure you have a Java Runtime Environment (JRE) downloaded that includes JavaFX. I would recommend [Bellsoft Liberica 11](https://bell-sw.com/pages/downloads/#/java-11-lts). (**NOTE** you need the **FULL** JRE or JDK, not the standard, you can change in the drop down which version you are downloading).
+1- Make sure you have a Java Runtime Environment (JRE) downloaded that includes JavaFX. I would recommend [Bellsoft Liberica 17](https://bell-sw.com/pages/downloads/#/java-17-lts). (**NOTE** you need the **FULL** JRE or JDK, not the standard, you can change in the drop down which version you are downloading).
 If you don't plan on developing anything in Java, download the full JRE, else download the full JDK.
 
 2- Once your JRE or JDK is downloaded, download WordleFX-v1.1.0.jar from [the releases page](https://github.com/jpkhawam/WordleFX/releases/tag/v1.1.0).
@@ -33,9 +33,9 @@ Closing the terminal would also close the application.
 This should run it. If it doesn't, make sure you have restarted after downloading your JRE.
 
 # What is missing?
-Well, the animations in JavaFX are... _weird_. I can not have each letter wait for the other to reveal itself, so for the sake of not looking like a 2007 Powerpoint, letters will fade in/fade out when guessed. Also, I have yet to add dark mode, or colorblind mode. I'm colorblind myself but seeing well so it's alright for now, it is needed more for dark mode. Statistics and such are also not made yet, might do it soon.
+Well, the animations in JavaFX are... _weird_. I can not have each letter wait for the other to reveal itself, so for the sake of not looking like a 2007 Powerpoint, letters will fade in/fade out when guessed. Also, dark mode, colorblind mode, and Statistics were not made.
 
-## Code explanation if anyone needs it
+## Code explanation
 - `MainApplication.java` is responsible for starting the app, and for calling the relevant methods in the controller to build some UI elements like the grid and keyboard.
 - `MainController.java` is the controller for the main class above. I tried to keep code minimal inside it for easy debugging. 
 - `MainHelper.java` has the "logic" needed by the controller to work. It is there to keep the controller clean.
