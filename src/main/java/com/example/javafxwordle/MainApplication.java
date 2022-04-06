@@ -64,12 +64,15 @@ public class MainApplication extends Application {
 
     public void initializeWordLists() {
         InputStream winning_words = getClass().getResourceAsStream("winning-words.txt");
-        Stream<String> winning_words_lines = new BufferedReader(new InputStreamReader(winning_words)).lines();
-        winning_words_lines.forEach(winningWords::add);
-
         InputStream dictionary = getClass().getResourceAsStream("dictionary.txt");
-        Stream<String> dictionary_lines = new BufferedReader(new InputStreamReader(dictionary)).lines();
-        dictionary_lines.forEach(dictionaryWords::add);
+
+        if (winning_words != null && dictionary != null) {
+            Stream<String> winning_words_lines = new BufferedReader(new InputStreamReader(winning_words)).lines();
+            winning_words_lines.forEach(winningWords::add);
+            Stream<String> dictionary_lines = new BufferedReader(new InputStreamReader(dictionary)).lines();
+            dictionary_lines.forEach(dictionaryWords::add);
+        } else
+            quit();
     }
 
 }

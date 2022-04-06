@@ -47,13 +47,13 @@ public class HelpWindow {
         Label label1 = new Label("W");
         label1.getStyleClass().setAll("correct-letter-example");
         firstWord.add(label1);
-        for(String letter: new String[]{"E", "A", "R", "Y"}) {
+        for (String letter : new String[]{"E", "A", "R", "Y"}) {
             Label label = new Label(letter);
             label.getStyleClass().setAll("default-letter-example");
             firstWord.add(label);
         }
         HBox firstWordVBox = new HBox(3);
-        for(Label label: firstWord)
+        for (Label label : firstWord)
             firstWordVBox.getChildren().add(label);
         Label firstWordLabel = new Label("The letter W is in the word and in the correct spot.");
         firstWordLabel.getStyleClass().setAll("lead");
@@ -65,14 +65,15 @@ public class HelpWindow {
         labelP.getStyleClass().setAll("default-letter-example");
         Label labelI = new Label("I");
         labelI.getStyleClass().setAll("present-letter-example");
-        secondWord.add(labelP); secondWord.add(labelI);
-        for(String letter: new String[]{"L", "L", "S"}) {
+        secondWord.add(labelP);
+        secondWord.add(labelI);
+        for (String letter : new String[]{"L", "L", "S"}) {
             Label label = new Label(letter);
             label.getStyleClass().setAll("default-letter-example");
             secondWord.add(label);
         }
         HBox secondWordVBox = new HBox(3);
-        for(Label label: secondWord)
+        for (Label label : secondWord)
             secondWordVBox.getChildren().add(label);
         Label secondWordLabel = new Label("The letter I is in the word but in the wrong spot.");
         secondWordLabel.getStyleClass().setAll("lead");
@@ -80,7 +81,7 @@ public class HelpWindow {
         /* THIRD WORD */
 
         ArrayList<Label> thirdWord = new ArrayList<>();
-        for(String letter: new String[]{"V", "A", "G"}) {
+        for (String letter : new String[]{"V", "A", "G"}) {
             Label label = new Label(letter);
             label.getStyleClass().setAll("default-letter-example");
             thirdWord.add(label);
@@ -89,9 +90,10 @@ public class HelpWindow {
         labelU.getStyleClass().setAll("wrong-letter-example");
         Label labelE = new Label("E");
         labelE.getStyleClass().setAll("default-letter-example");
-        thirdWord.add(labelU); thirdWord.add(labelE);
+        thirdWord.add(labelU);
+        thirdWord.add(labelE);
         HBox thirdWordVBox = new HBox(3);
-        for(Label label: thirdWord)
+        for (Label label : thirdWord)
             thirdWordVBox.getChildren().add(label);
         Label thirdWordLabel = new Label("The letter U is not in the word in any spot.");
         thirdWordLabel.getStyleClass().setAll("lead");

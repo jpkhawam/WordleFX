@@ -1,12 +1,10 @@
 package com.example.javafxwordle;
 
-import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.util.Duration;
 
 public class MainController {
 
@@ -65,12 +63,7 @@ public class MainController {
     }
 
     public void restart() {
-        RotateTransition rotateTransition = new RotateTransition(Duration.millis(500), restartIcon);
-        rotateTransition.setFromAngle(0);
-        rotateTransition.setToAngle(360);
-        rotateTransition.setOnFinished(ae ->
-                mainHelper.resetGame(gridPane, keyboardRow1, keyboardRow2, keyboardRow3));
-        rotateTransition.play();
+        mainHelper.restart(restartIcon, gridPane, keyboardRow1, keyboardRow2, keyboardRow3);
     }
 
 }

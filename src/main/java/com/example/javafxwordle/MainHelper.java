@@ -3,6 +3,7 @@ package com.example.javafxwordle;
 import javafx.animation.*;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -295,7 +296,7 @@ public class MainHelper {
     }
 
     public void resetGame(GridPane gridPane, GridPane keyboardRow1, GridPane keyboardRow2,
-                           GridPane keyboardRow3) {
+                          GridPane keyboardRow3) {
         getRandomWord();
         Label label;
         for (Node child : gridPane.getChildren())
@@ -329,6 +330,15 @@ public class MainHelper {
 
         CURRENT_COLUMN = 1;
         CURRENT_ROW = 1;
+    }
+
+    public void restart(ImageView restartIcon, GridPane gridPane, GridPane keyboardRow1,
+                        GridPane keyboardRow2, GridPane keyboardRow3) {
+        RotateTransition rotateTransition = new RotateTransition(Duration.millis(500), restartIcon);
+        rotateTransition.setFromAngle(0);
+        rotateTransition.setToAngle(360);
+        rotateTransition.setOnFinished(ae -> resetGame(gridPane, keyboardRow1, keyboardRow2, keyboardRow3));
+        rotateTransition.play();
     }
 
     private boolean binarySearch(ArrayList<String> list, String string) {
